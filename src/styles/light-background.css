@@ -1,11 +1,11 @@
-.dark-background {
+.light-background {
     position: relative;
     overflow: hidden;
     z-index: 0;
 }
 
 /* Blurred background image */
-.dark-background::before {
+.light-background::before {
     content: "";
     position: absolute;
     top: 0;
@@ -23,19 +23,19 @@
 }
 
 /* Gradient overlay on top of blurred image */
-.dark-background::after {
+.light-background::after {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(117deg, #104986 0.1%, #18334f 99.9%);
+    background: var(--light-background-color);
     z-index: 0;
 }
 
 /* Make text sit above both background layers */
-.dark-background>* {
+.light-background>* {
     position: relative;
     z-index: 2;
 }

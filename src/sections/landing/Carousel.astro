@@ -1,0 +1,64 @@
+---
+import Button from "../../components/Button.astro";
+import TestimonialSlider from "../../function-components/TestimonialSlider";
+import '../../styles/light-background.css';
+
+const testimonialList = [
+    { author: "joe1", organization: "apple", content: "very good job" },
+    { author: "joe2", organization: "apple", content: "very good job" },
+    { author: "joe3", organization: "apple", content: "very good job" },
+    { author: "joe4", organization: "apple", content: "very good job" },
+    { author: "joe5", organization: "apple", content: "very good job" },
+    { author: "joe6", organization: "apple", content: "very good job" },
+    { author: "joe7", organization: "apple", content: "very good job" },
+    { author: "joe8", organization: "apple", content: "very good job" },
+];
+---
+
+<section class="light-background">
+    <div class="carousel-container">
+        <div class="hero-element-hidden carousel-title">
+            <p class="blue-medium-text">
+                Az Európa 2000 Gimnázium Zugló szívében várja a diákokat, hogy
+                egy inspiráló közösség részei legyenek.
+            </p>
+        </div>
+        <div class="carousel">
+            <TestimonialSlider list={testimonialList} client:load />
+        </div>
+        <div class="flex flex-row justify-center gap-4 p-4">
+            <div class="px-4 py-2">
+                <Button text="Key Link 1" />
+            </div>
+            <div class="px-4 py-2">
+                <Button text="Key Link 2" />
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    
+
+    .blue-medium-text {
+        color: var(--Blue4);
+        font-family: "Sansation", sans-serif;
+        font-size: 24px;
+    }
+
+    .carousel-container {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 25fr 50fr 25fr;
+        justify-items: center;
+
+        .carousel-title {
+            text-align: center;
+            align-content: end;
+            width: 80vw;
+        }
+
+        .carousel {
+            width: 80vw;
+        }
+    }
+</style>
