@@ -1,0 +1,72 @@
+.image-container {
+    transition: transform .5s ease-in-out;
+}
+
+.image-container.rotate-2:hover {
+    transform: rotate(-2deg);
+    animation: ease;
+}
+
+.image-container.-rotate-2:hover {
+    transform: rotate(2deg);
+    animation: ease;
+}
+
+.image-container {
+    position: relative;
+    background-image: linear-gradient(175deg, rgba(0, 0, 0, 0.00) 34.59%, #000 94.22%), url('D85-7380.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (width <=40rem
+   
+) {
+    .image-container {
+        height: 200px;
+    }
+}
+
+@media (width > 40rem
+   
+) {
+    .image-container {
+        height: 400px;
+    }
+}
+
+
+.overlay-text-container-padding-top-on-hover {
+    padding-top: 230px;
+    transition: padding 0.75s ease, background 0.5s ease;
+}
+
+.overlay-text-container-padding-top-on-hover:hover {
+    padding-top: 0px;
+    transition: padding 0.75s ease, background 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-text-container {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    font-family: "Raleway", sans-serif;
+    overflow: hidden;
+    color: white;
+
+    .overlay-text-title {
+        padding-top: 100px;
+    }
+
+    .overlay-text-description {
+        padding-top: 100px;
+        font-size: 16px;
+    }
+}

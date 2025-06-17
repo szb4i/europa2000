@@ -1,0 +1,73 @@
+---
+
+import '../../styles/dark-background.css';
+
+---
+
+<section class="dark-background">
+    <div class="quote-container">
+        <div class="quote-text hidden-1s">
+            <span class="white-text"
+                >Olyan iskolát álmodtam meg, ahol a saját gyerekem is
+            </span><span class="green-text">örömmel </span><span
+                class="white-text">tanulna.</span
+            >
+        </div>
+        <div class="quote-author hidden-2s">Papp András, igazgató</div>
+    </div>
+</section>
+<script>
+    const greenTextObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+            } else {
+                entry.target.classList.remove("animate");
+            }
+        });
+    });
+    const greenTextElements = document.querySelectorAll(".green-text");
+    greenTextElements.forEach((el) => greenTextObserver.observe(el));
+</script>
+<style>
+    .quote-container {
+        color: #d1f8ef;
+        width: 80vw;
+
+        .quote-text {
+            font-family: "Sansation", sans-serif;
+            text-align: center;
+            font-size: 38px;
+            padding-bottom: 38px;
+
+            .green-text {
+                font-style: italic;
+                padding-right: 2px;
+                text-decoration: none;
+                transition: color 0.3s ease-in-out 2s;
+            }
+
+            .animate {
+                color: var(--Green);
+            }
+        }
+
+        .quote-author {
+            font-family: "Raleway", sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            text-align: end;
+        }
+
+        @media (width <= 40rem) {
+            .quote-text {
+                font-size: 24px;
+                padding-bottom: 24px;
+            }
+
+            .quote-author {
+                font-size: 16px;
+            }
+        }
+    }
+</style>

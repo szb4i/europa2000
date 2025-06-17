@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import MenuButton from "./MenuButton.astro";
+
+// const userEmail = Astro.cookies.get("userEmail")
+---
+
+<header>
+    <div
+        class="hidden-on-mobile fixed z-20 flex justify-between items-center px-12 py-12 justify-self-center w-full"
+    >
+        <a href="/">
+            <Image
+                src="/logo.png"
+                alt="rhythm nation logo"
+                width={128}
+                height={128}
+                format="webp"
+                class="logo-button"
+            />
+        </a>
+        <MenuButton isMobile={false} />
+    </div>
+    <div class="hidden-on-desktop footer-wrapper">
+        <div class="mobile-footer">
+            <MenuButton isMobile={true} />
+            <p>link1</p>
+            <p>link2</p>
+        </div>
+    </div>
+</header>
+<style>
+    .logo-button {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .logo-button:hover {
+        transform: scale(1.1);
+    }
+
+    .footer-wrapper {
+        position: relative;
+        height: 100vh;
+    }
+
+    .mobile-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--Blue4);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px 0 20px;
+
+        p {
+            color: white;
+        }
+    }
+</style>

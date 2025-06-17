@@ -1,0 +1,70 @@
+---
+type Props = {
+    isMobile?: boolean;
+};
+
+const { isMobile } = Astro.props;
+
+const menuButtonSize = isMobile ? "70px" : "76px";
+---
+
+<div class="menu-button">
+    <div class="background-image-layer">
+        <div class="line line-top"></div>
+        <div class="line line-middle"></div>
+        <div class="line line-bottom"></div>
+    </div>
+</div>
+<style define:vars={{ menuButtonSize }}>
+    .menu-button {
+        background-color: #8bc444;
+        height: var(--menuButtonSize);
+        width: var(--menuButtonSize);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        .background-image-layer {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background-image: url("/europa2000-menu-button.png");
+            background-size: 66% 66%;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            .line {
+                background: var(--Grays-White, #fff);
+                height: 2px;
+            }
+
+            .line-top {
+                width: 60px;
+            }
+
+            .line-middle {
+                width: 40px;
+                transition: width 1s;
+            }
+
+            .line-bottom {
+                width: 20px;
+                transition: width 1s;
+            }
+        }
+    }
+
+    .menu-button:hover {
+        transform: scale(1.1);
+
+        .line-middle {
+            width: 60px;
+        }
+
+        .line-bottom {
+            width: 60px;
+        }
+    }
+</style>

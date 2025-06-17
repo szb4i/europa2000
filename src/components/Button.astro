@@ -1,0 +1,76 @@
+---
+type Props = {
+    text: string;
+    color?: string;
+};
+
+const { text, color } = Astro.props;
+
+function hexToRgba(hex: string): string | null {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, 0.5)` : null;
+}
+
+const borderColor = color || "#00003C"; // Default to Blue4
+const borderColorOpaque = hexToRgba(borderColor);
+
+
+---
+
+<button class="toggler btn">{text}</button>
+<style define:vars={{ borderColor, borderColorOpaque }}>
+    .toggler {
+        --bgColor: transparent;
+        --borderWidth: 24px;
+        color: var(--borderColor);
+        letter-spacing: 0.48px;
+        margin-top: 30px;
+        padding: 8px 24px;
+        -webkit-transition: 1s ease-in-out;
+        -o-transition: 1s ease-in-out;
+        -moz-transition: 1s ease-in-out;
+        transition: 1s ease-in-out;
+    }
+
+    .toggler:hover {
+        --borderWidth: 100%;
+    }
+
+    .btn {
+        background-color: var(--bgColor);
+        border: 1px solid var(--borderColorOpaque);
+        cursor: pointer;
+        position: relative;
+        font-family: "Raleway", sans-serif;
+        font-size: 24px;
+        color: var(--borderColor);
+    }
+
+    .btn:after,
+    .btn:before {
+        background-color: transparent;
+        border: 2px solid var(--borderColor);
+        bottom: -2px;
+        content: "";
+        height: -webkit-calc(100% + 4px);
+        height: -moz-calc(100% + 4px);
+        height: calc(100% + 4px);
+        position: absolute;
+        top: -2px;
+        -webkit-transition: 0.6s;
+        -o-transition: 0.6s;
+        -moz-transition: 0.6s;
+        transition: 0.6s;
+        width: var(--borderWidth);
+    }
+
+    .btn:before {
+        border-right: 0;
+        left: -2px;
+    }
+
+    .btn:after {
+        border-left: 0;
+        right: -2px;
+    }
+</style>
