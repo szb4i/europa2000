@@ -1,5 +1,6 @@
 ---
 
+
 ---
 
 <section class="kik-vagyunk-section">
@@ -18,28 +19,9 @@
 </section>
 <script>
     import "/src/scripts/horizontalScroll.js";
-    function disableScroll() {
-        window.addEventListener('wheel', preventScroll, { passive: false });
-        window.addEventListener('touchmove', preventScroll, { passive: false }); // mobile
-    }
 
-    function enableScroll() {
-        window.removeEventListener('wheel', preventScroll);
-        window.removeEventListener('touchmove', preventScroll);
-    }
-
-    function preventScroll(e) {
-        e.preventDefault();
-    }
-
-    // window.addEventListener("wheel", () => {
-    //     console.log('wheel');
-    // });
-
-    window.addEventListener("scroll", () => {
-        const range = document
-            .querySelector(".kik-vagyunk-section")
-            .getBoundingClientRect().height;
+    function onScroll() {
+        const range = window.innerHeight;
         const position =
             -1 *
             (document
@@ -59,35 +41,40 @@
         const expandingDiv = document.getElementById("expandingDiv");
         expandingDiv.style.width = `${width}px`;
         expandingDiv.style.height = `${height}px`;
-    });
+    }
 
-    const observer = new IntersectionObserver((entries) => {
+    window.addEventListener("scroll", onScroll);
+
+    let horizontalScroll;
+    const observerStart = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
+            const blocks = document.getElementsByClassName("horizontal-scroll-block");
+            const container = document.getElementsByClassName("horizontal-scroll-container");
             document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
                 element.classList.add('horizontal-scroll-mode');
             });
-            disableScroll();
-            window.scrollTo({
-                top: window.scrollY,
-                behavior: 'auto' // Instantly snap
-            });
-            var blocks = document.getElementsByClassName("horizontal-scroll-block");
-            var container = document.getElementsByClassName("horizontal-scroll-container");
-            var hs = new HorizontalScroll.default({
+            // window.removeEventListener('scroll', onScroll);
+            horizontalScroll = new HorizontalScroll.default({
                 blocks: blocks,
                 container: container,
                 isAnimated: true,
                 springEffect: 0.8,
             });
-        } 
-        // else {
-        //     document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
-        //         element.classList.remove('horizontal-scroll-mode');
-        //     });
-        // }
-    }, {threshold: 0.95});
-    const observableElement = document.querySelectorAll(".kik-vagyunk-section");
-    observableElement.forEach((el) => observer.observe(el));
+        }
+    });
+    const observableElementStart = document.querySelectorAll(".image-2");
+    observableElementStart.forEach((el) => observerStart.observe(el));
+
+    const observerEnd = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            // document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
+            //     element.classList.remove('horizontal-scroll-mode');
+            // });
+            horizontalScroll?.destroy();
+        }
+    }, { threshold: 0.01 });
+    const observableElementEnd = document.querySelectorAll(".section-after-horizontal-scroll");
+    observableElementEnd.forEach((el) => observerEnd.observe(el));
 
     // document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
     //     element.classList.add('horizontal-scroll-mode');
@@ -104,8 +91,18 @@
         
 </script>
 <style>
+    .image-container.horizontal-scroll-mode {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+    }
+
+    
     .kik-vagyunk-section {
-        overflow: hidden;
+        height: 200vh;
+        place-items: unset;
+        align-content: unset;
+        justify-content: center;
     }
 
     .image-container {
@@ -119,11 +116,6 @@
         background-size: cover;
         background-position: center;
         border-radius: var(--border-radius);
-    }
-    
-    .horizontal-scroll-mode {
-        width: 100vw;
-        height: 100vh;
     }
 
     .image-1 {
@@ -150,11 +142,14 @@
         }
     }
 
-    .kik-vagyunk-section {
+    .horizontal-scroll-mode {
+        width: 100vw;
         height: 100vh;
-        place-items: unset;
-        align-content: unset;
-        justify-content: center;
+        border-radius: 0;
+
+        .overlay-text-container {
+            border-radius: 0;
+        }
     }
 
     .expanding-div {
