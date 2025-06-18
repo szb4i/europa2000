@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import Quote from "../sections/landing/Quote.astro";
 import Hero from "../sections/landing/Hero.astro";
 import Carousel from "../sections/landing/Carousel.astro";
+import KikVagyunk from "../sections/landing/KikVagyunk.astro";
 
 ---
 
@@ -20,7 +21,13 @@ import Carousel from "../sections/landing/Carousel.astro";
         <div class="header hero-element-hidden"><Header /></div>
         <Hero />
         <Carousel />
-        <Quote />
+        <div class="dark-background">
+            <Quote />
+            <KikVagyunk />
+        </div>
+        <!-- <div class="light-background" style="height: 100vh;">
+            asd
+        </div> -->
         <div class="footer hero-element-hidden"><Footer /></div>
     </body>
 </html>
