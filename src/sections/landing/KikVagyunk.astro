@@ -1,103 +1,98 @@
 ---
 
-
 ---
 
-<section class="kik-vagyunk-section">
-    <div class="image-container horizontal-scroll-container" id="expandingDiv">
-        <div class="image-background horizontal-scroll-block image-1">
-            <div class="overlay-text-container">
-                <div class="overlay-text-title">Kik Vagyunk?</div>
-            </div>
-        </div>
-        <div class="image-background horizontal-scroll-block image-2">
-            <div class="overlay-text-container">
-                <div class="overlay-text-title">Kik Vagyunk?</div>
-            </div>
+<!-- <div class="img-gsap-vertical-scroll-container" id="expandingDiv">
+    <div class="image-gsap-vertical-scroll image-background image-1">
+        <div class="overlay-text-container">
+            <div class="overlay-text-title">Kik Vagyunk?</div>
         </div>
     </div>
-</section>
+    <div class="image-gsap-vertical-scroll image-background image-2">
+        <div class="overlay-text-container">
+            <div class="overlay-text-title">Kik Vagyunk?</div>
+        </div>
+    </div>
+    <div class="image-gsap-vertical-scroll image-background image-3">
+        <div class="overlay-text-container">
+            <div class="overlay-text-title">Kik Vagyunk?</div>
+        </div>
+    </div>
+</div> -->
+
+<div class="image-zoom-section">
+    <div class="image-zoom-container center-image">
+        <img src="/landing/kik-vagyunk/kik-vagyunk-1.jpg" class="gsap-image" alt="" />
+        <img src="/landing/kik-vagyunk/kik-vagyunk-2.jpg" class="gsap-image hidden-images" alt="" />
+        <img src="/landing/kik-vagyunk/kik-vagyunk-3.jpg" class="gsap-image hidden-images" alt="" />
+    </div>
+</div>
+
 <script>
     import "/src/scripts/horizontalScroll.js";
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    function onScroll() {
-        const range = window.innerHeight;
-        const position =
-            -1 *
-            (document
-                .querySelector(".kik-vagyunk-section")
-                .getBoundingClientRect().top -
-                window.innerHeight);
+    gsap.registerPlugin(ScrollTrigger);
+    const imageZoomContainerElement = document.querySelector(".image-zoom-container");
+	gsap.to(".gsap-image", {
+		ease: "none",
+		scale: 2,
+		scrollTrigger: {
+			trigger: imageZoomContainerElement,
+			pin: imageZoomContainerElement,
+			start: "center center",
+			end: "center top",
+			scrub: true,
+			invalidateOnRefresh: true,
+			markers: true,
+			onToggle: (params) => {
+				console.log(`${params.isActive} ${window.scrollY} ${params.start} ${params.end}`)
+				if (!params.isActive && window.scrollY >= params.end) {
+					document.querySelectorAll('.gsap-image').forEach(element => {
+						element.classList.remove('hidden-images');
+                        element.classList.add('gsap-image-carousel-mode');
+					});
+                    document.querySelectorAll('.image-zoom-container').forEach(element => {
+						element.classList.remove('center-image');
+					});
+				} else if (params.isActive && window.scrollY <= params.end) { 
+					document.querySelectorAll('.gsap-image').forEach((element, i) => {
+						if (0 < i) {
+							element.classList.add('hidden-images');
+						}
+                        element.classList.remove('gsap-image-carousel-mode');
+					});
+                    document.querySelectorAll('.image-zoom-container').forEach(element => {
+						element.classList.add('center-image');
+					});
+				}
+			},
+		},
+	});
 
-        const progress = Math.min(Math.max(position / range, 0.5), 1); // 0 to 1
-        const maxWidth = window.innerWidth;
-        const maxHeight = window.innerHeight;
-
-        const startSize = 20;
-
-        const width = startSize + (maxWidth - startSize) * progress;
-        const height = startSize + (maxHeight - startSize) * progress;
-
-        const expandingDiv = document.getElementById("expandingDiv");
-        expandingDiv.style.width = `${width}px`;
-        expandingDiv.style.height = `${height}px`;
-    }
-
-    window.addEventListener("scroll", onScroll);
-
-    let horizontalScroll;
-    const observerStart = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            const blocks = document.getElementsByClassName("horizontal-scroll-block");
-            const container = document.getElementsByClassName("horizontal-scroll-container");
-            document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
-                element.classList.add('horizontal-scroll-mode');
-            });
-            // window.removeEventListener('scroll', onScroll);
-            horizontalScroll = new HorizontalScroll.default({
-                blocks: blocks,
-                container: container,
-                isAnimated: true,
-                springEffect: 0.8,
-            });
-        }
-    });
-    const observableElementStart = document.querySelectorAll(".image-2");
-    observableElementStart.forEach((el) => observerStart.observe(el));
-
-    const observerEnd = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            // document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
-            //     element.classList.remove('horizontal-scroll-mode');
-            // });
-            horizontalScroll?.destroy();
-        }
-    }, { threshold: 0.01 });
-    const observableElementEnd = document.querySelectorAll(".section-after-horizontal-scroll");
-    observableElementEnd.forEach((el) => observerEnd.observe(el));
-
-    // document.querySelectorAll('.kik-vagyunk-section .horizontal-scroll-container, .kik-vagyunk-section .horizontal-scroll-block').forEach(element => {
-    //     element.classList.add('horizontal-scroll-mode');
-    // });
-
-    // var blocks = document.getElementsByClassName("horizontal-scroll-block");
-    // var container = document.getElementsByClassName("horizontal-scroll-container");
-    // var hs = new HorizontalScroll.default({
-    //     blocks: blocks,
-    //     container: container,
-    //     isAnimated: true,
-    //     springEffect: 0.8,
-    // });
-        
+    gsap.to(".gsap-image", {
+		ease: "none",
+		x: () => '-400%',
+		scrollTrigger: {
+            trigger: imageZoomContainerElement,
+			pin: imageZoomContainerElement,
+			start: "1 top",
+			end: () => "+=800%",
+			scrub: true,
+            snap: [0, 0.5, 0.995],
+			markers: true,
+			onToggle: (params) => {
+				console.log(params.isActive)
+			},
+		},
+	});
 </script>
 <style>
-    .image-container.horizontal-scroll-mode {
-        position: fixed !important;
-        top: 0;
-        left: 0;
+    body {
+        /* overflow-x: hidden; */
     }
 
-    
     .kik-vagyunk-section {
         height: 200vh;
         place-items: unset;
@@ -105,31 +100,50 @@
         justify-content: center;
     }
 
-    .image-container {
-        position: relative;
+    .expanding-image-container {
+        /* gap: 16px; */
+        /* height: 100vh; */
+        height: 25vh;
+        overflow: hidden;
     }
     
+    .img-gsap-vertical-scroll-container {
+        display: flex;
+        flex-direction: row;
+        /* gap: 16px; */
+        height: 100vh;
+        width: 300vh;
+        overflow: hidden;
+    }
+
     .image-background {
         --border-radius: 24px;
-        height: 100%;
-        width: 100%;
+        /* height: 100%;
+        width: 100%; */
         background-size: cover;
         background-position: center;
         border-radius: var(--border-radius);
+        height: 50vh;
+        /* 100vw !important; */
+        width: 50vw;
     }
 
     .image-1 {
-        background: url("/landing/kik-vagyunk/kik-vagyunk-1.jpg") no-repeat 50% 50%;
+        background: url("/landing/kik-vagyunk/kik-vagyunk-1.jpg");
     }
 
     .image-2 {
-        background: url("/landing/kik-vagyunk/kik-vagyunk-2.jpg") no-repeat 50% 50%;
+        background: url("/landing/kik-vagyunk/kik-vagyunk-2.jpg");
+    }
+
+    .image-3 {
+        background: url("/landing/kik-vagyunk/kik-vagyunk-3.jpg");
     }
 
     .overlay-text-container {
         background: rgba(0, 0, 0, 0.5);
-        width: 100%;
         height: 100%;
+        width: 100vw;
         font-family: "Raleway", sans-serif;
         color: white;
         display: flex;
@@ -142,26 +156,36 @@
         }
     }
 
-    .horizontal-scroll-mode {
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
+    .image-zoom-section {
+		height: 700vw;
+        display: flex;
+        width: 100%;
+	}
 
-        .overlay-text-container {
-            border-radius: 0;
-        }
+    .image-zoom-container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+		align-items: center;
     }
 
-    .expanding-div {
-        /* position: fixed;
-        top: 0;
-        left: 0; */
-        background: #4caf50;
-        width: 100px;
-        height: 100px;
-        transition:
-            width 0.1s ease-out,
-            height 0.1s ease-out;
-        z-index: 10;
+    .center-image {
+        justify-content: center;
+    }
+
+    .hidden-images {
+		display: none;
+	}
+
+    .gsap-image {
+        height: 50vh;
+        width: auto;
+        /* height: 100vh; */
+    }
+
+    .gsap-image-carousel-mode {
+        height: 100vh;
+        object-fit: cover;
+        scale: 0.5 !important;
     }
 </style>
