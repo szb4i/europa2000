@@ -1,30 +1,23 @@
 ---
 
 ---
-
-<!-- <div class="img-gsap-vertical-scroll-container" id="expandingDiv">
-    <div class="image-gsap-vertical-scroll image-background image-1">
-        <div class="overlay-text-container">
-            <div class="overlay-text-title">Kik Vagyunk?</div>
-        </div>
-    </div>
-    <div class="image-gsap-vertical-scroll image-background image-2">
-        <div class="overlay-text-container">
-            <div class="overlay-text-title">Kik Vagyunk?</div>
-        </div>
-    </div>
-    <div class="image-gsap-vertical-scroll image-background image-3">
-        <div class="overlay-text-container">
-            <div class="overlay-text-title">Kik Vagyunk?</div>
-        </div>
-    </div>
-</div> -->
-
-<div class="image-zoom-section">
+<div class="kik-vagyunk-section">
     <div class="image-zoom-container center-image">
-        <img src="/landing/kik-vagyunk/kik-vagyunk-1.jpg" class="gsap-image" alt="" />
-        <img src="/landing/kik-vagyunk/kik-vagyunk-2.jpg" class="gsap-image hidden-images" alt="" />
-        <img src="/landing/kik-vagyunk/kik-vagyunk-3.jpg" class="gsap-image hidden-images" alt="" />
+        <div class="gsap-image image-background image-1">
+            <div class="overlay-text-container">
+                <div class="overlay-text-title">Kik Vagyunk?</div>
+            </div>
+        </div>
+        <div class="gsap-image image-background image-2 hidden-images">
+            <div class="overlay-text-container">
+                <div class="overlay-text-title">Kik Vagyunk?</div>
+            </div>
+        </div>
+        <div class="gsap-image image-background image-3 hidden-images">
+            <div class="overlay-text-container">
+                <div class="overlay-text-title">Kik Vagyunk?</div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -34,98 +27,95 @@
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
-    const imageZoomContainerElement = document.querySelector(".image-zoom-container");
-	gsap.to(".gsap-image", {
-		ease: "none",
-		scale: 2,
-		scrollTrigger: {
-			trigger: imageZoomContainerElement,
-			pin: imageZoomContainerElement,
-			start: "center center",
-			end: "center top",
-			scrub: true,
-			invalidateOnRefresh: true,
-			markers: true,
-			onToggle: (params) => {
-				console.log(`${params.isActive} ${window.scrollY} ${params.start} ${params.end}`)
-				if (!params.isActive && window.scrollY >= params.end) {
-					document.querySelectorAll('.gsap-image').forEach(element => {
-						element.classList.remove('hidden-images');
-                        element.classList.add('gsap-image-carousel-mode');
-					});
-                    document.querySelectorAll('.image-zoom-container').forEach(element => {
-						element.classList.remove('center-image');
-					});
-				} else if (params.isActive && window.scrollY <= params.end) { 
-					document.querySelectorAll('.gsap-image').forEach((element, i) => {
-						if (0 < i) {
-							element.classList.add('hidden-images');
-						}
-                        element.classList.remove('gsap-image-carousel-mode');
-					});
-                    document.querySelectorAll('.image-zoom-container').forEach(element => {
-						element.classList.add('center-image');
-					});
-				}
-			},
-		},
-	});
+    const imageZoomContainerElement = document.querySelector(
+        ".image-zoom-container",
+    );
+    gsap.to(".gsap-image", {
+        ease: "none",
+        zoom: 2,
+        scrollTrigger: {
+            trigger: imageZoomContainerElement,
+            pin: imageZoomContainerElement,
+            start: "center center",
+            end: "center top",
+            scrub: true,
+            invalidateOnRefresh: true,
+            markers: true,
+            onToggle: (params) => {
+                if (!params.isActive && window.scrollY >= params.end) {
+                    document
+                        .querySelectorAll(".gsap-image")
+                        .forEach((element) => {
+                            element.classList.remove("hidden-images");
+                        });
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.remove("center-image");
+                        });
+                } else if (params.isActive && window.scrollY <= params.end) {
+                    document
+                        .querySelectorAll(".gsap-image")
+                        .forEach((element, i) => {
+                            if (0 < i) {
+                                element.classList.add("hidden-images");
+                            }
+                        });
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.add("center-image");
+                        });
+                }
+            },
+        },
+    });
 
     gsap.to(".gsap-image", {
-		ease: "none",
-		x: () => '-400%',
-		scrollTrigger: {
+        ease: "none",
+        x: () => "-200%",
+        scrollTrigger: {
             trigger: imageZoomContainerElement,
-			pin: imageZoomContainerElement,
-			start: "1 top",
-			end: () => "+=800%",
-			scrub: true,
+            pin: imageZoomContainerElement,
+            start: "1 top",
+            end: () => "+=200%",
+            scrub: true,
             snap: [0, 0.5, 0.995],
-			markers: true,
-			onToggle: (params) => {
-				console.log(params.isActive)
-			},
-		},
-	});
+            markers: true,
+            onToggle: (params) => {
+                if (params.isActive) {
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.add("carousel-mode");
+                        });
+                } else {
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.remove("carousel-mode");
+                        });
+                }
+            },
+        },
+    });
 </script>
 <style>
-    body {
-        /* overflow-x: hidden; */
-    }
-
     .kik-vagyunk-section {
-        height: 200vh;
-        place-items: unset;
-        align-content: unset;
-        justify-content: center;
-    }
-
-    .expanding-image-container {
-        /* gap: 16px; */
-        /* height: 100vh; */
-        height: 25vh;
-        overflow: hidden;
-    }
-    
-    .img-gsap-vertical-scroll-container {
+        height: 300vw;
         display: flex;
-        flex-direction: row;
-        /* gap: 16px; */
-        height: 100vh;
-        width: 300vh;
-        overflow: hidden;
+        width: 100%;
     }
 
     .image-background {
         --border-radius: 24px;
-        /* height: 100%;
-        width: 100%; */
-        background-size: cover;
-        background-position: center;
+        background-size: cover !important;
+        background-position: center !important;
         border-radius: var(--border-radius);
-        height: 50vh;
-        /* 100vw !important; */
-        width: 50vw;
+    }
+
+    .carousel-mode .image-background {
+        border-radius: 0px;
     }
 
     .image-1 {
@@ -142,8 +132,8 @@
 
     .overlay-text-container {
         background: rgba(0, 0, 0, 0.5);
-        height: 100%;
-        width: 100vw;
+        height: 50vh;
+        width: 50vw;
         font-family: "Raleway", sans-serif;
         color: white;
         display: flex;
@@ -156,17 +146,15 @@
         }
     }
 
-    .image-zoom-section {
-		height: 700vw;
-        display: flex;
-        width: 100%;
-	}
+    .carousel-mode .overlay-text-container {
+        border-radius: 0px;
+    }
 
     .image-zoom-container {
         height: 100vh;
         width: 100%;
         display: flex;
-		align-items: center;
+        align-items: center;
     }
 
     .center-image {
@@ -174,18 +162,6 @@
     }
 
     .hidden-images {
-		display: none;
-	}
-
-    .gsap-image {
-        height: 50vh;
-        width: auto;
-        /* height: 100vh; */
-    }
-
-    .gsap-image-carousel-mode {
-        height: 100vh;
-        object-fit: cover;
-        scale: 0.5 !important;
+        display: none;
     }
 </style>
