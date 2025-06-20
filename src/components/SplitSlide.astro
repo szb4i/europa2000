@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+    isTextOnRight?: boolean;
+    textTitle: string;
+    textParagraph: string;
+    imageURL: string;
+};
+
+const {
+    isTextOnRight = false,
+    textTitle,
+    textParagraph,
+    imageURL,
+} = Astro.props;
+---
+
+<div class="split-slide-container">
+    {isTextOnRight ? <div
+        class="split-slide-image-side"
+        style={`background-image: url(${imageURL});`}
+    >
+    </div> : ''} 
+    <div class="split-slide-logo-side">
+        <div class="split-slide-text-container">
+            <div class="split-slide-text-title">
+                <span>{textTitle}</span>
+            </div>
+            <div class="split-slide-text-paragraph">
+                <span> {textParagraph}</span>
+            </div>
+        </div>
+        <div class="split-slide-logo-container">
+            <Image
+                src="/europa2000-menu-button.png"
+                alt="rhythm nation logo"
+                width={128}
+                height={128}
+                format="webp"
+            />
+        </div>
+    </div>
+    {!isTextOnRight ? <div
+        class="split-slide-image-side"
+        style={`background-image: url(${imageURL});`}
+    >
+    </div> : ''} 
+</div>
+<style>
+    .split-slide-container {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--light-background-color);
+    }
+
+    .split-slide-logo-side {
+        display: grid;
+        grid-template-rows: 3fr 2fr;
+
+        .split-slide-text-container {
+            align-content: center;
+            padding: 0% 10%;
+
+            .split-slide-text-title {
+                padding-bottom: 16px;
+
+                span {
+                    color: var(--Blue4);
+                    font-family: "Sansation", sans-serif;
+                    font-size: 38px;
+                }
+            }
+
+            .split-slide-text-paragraph {
+                span {
+                    color: var(--Blue4);
+                    font-family: "Raleway", sans-serif;
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .split-slide-logo-container {
+            align-content: center;
+            justify-items: center;
+            opacity: 0.6;
+        }
+    }
+
+    .split-slide-image-side {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+    }
+</style>

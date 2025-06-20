@@ -1,0 +1,46 @@
+---
+import Button from "../../components/Button.astro";
+import Card from "../../components/Card.astro";
+---
+
+<div class="kiemelt-hireink-container">
+    <div class="title-container">
+        <span>Kiemelt Híreink</span>
+    </div>
+    <div class="news-container">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+    </div>
+    <Button text="További Hírek" />
+</div>
+<style>
+    .kiemelt-hireink-container {
+        justify-items: center;
+        padding: 36px 0px;
+
+        .title-container {
+            text-align: center;
+
+            span {
+                align-self: end;
+                color: var(--Blue4);
+                font-family: "Sansation", sans-serif;
+                font-size: 38px;
+            }
+        }
+
+        .news-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            padding: 36px 0px;
+        }
+    }
+
+    .footer-container {
+        background-color: var(--Blue3);
+        height: 400px;
+    }
+</style>

@@ -5,7 +5,11 @@ import Quote from "../sections/landing/Quote.astro";
 import Hero from "../sections/landing/Hero.astro";
 import Carousel from "../sections/landing/Carousel.astro";
 import KikVagyunk from "../sections/landing/KikVagyunk.astro";
-
+import MibenMas from "../sections/landing/MibenMas.astro";
+import LandingSplitSlide from "../sections/landing/LandingSplitSlide.astro";
+import Kepzeseink from "../sections/landing/Kepzeseink.astro";
+import TamogassMinket from "../sections/landing/TamogassMinket.astro";
+import Hireink from "../sections/landing/Hireink.astro";
 ---
 
 <!doctype html>
@@ -25,12 +29,19 @@ import KikVagyunk from "../sections/landing/KikVagyunk.astro";
             <Quote />
             <KikVagyunk />
         </div>
-        <div class="light-background" style="height: 100vh;">
-            <span>asd</span>
+        <div class="light-background">
+            <MibenMas />
         </div>
-        <div class="footer hero-element-hidden"><Footer /></div>
+        <LandingSplitSlide />
+        <div class="light-background">
+            <Kepzeseink />
+            <TamogassMinket />
+            <Hireink/>
+        </div>
+        <Footer />
     </body>
 </html>
+
 <script src="/src/scripts/landing.js"></script>
 <style>
     .header,

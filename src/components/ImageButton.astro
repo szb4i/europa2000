@@ -1,0 +1,56 @@
+---
+import Button from "./Button.astro";
+
+type Props = {
+    buttonText: string;
+    buttonColor: string;
+    imageURL: string;
+};
+
+const { buttonText, buttonColor, imageURL } = Astro.props;
+---
+
+<div class="image-button-container">
+    <div
+        class="image-button-background-image"
+        style={`background-image: url(${imageURL});`}
+    >
+        <div class="image-button-dark-overlay">
+            <Button text={buttonText} color={buttonColor} />
+        </div>
+    </div>
+</div>
+<style define:vars={{ buttonColor }}>
+    .image-button-container {
+        height: 33vw;
+        width: 33vw;
+        overflow: hidden;
+        border-radius: 4px;
+        border: 1px solid var(--buttonColor);
+
+        .image-button-background-image {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: scale 0.5s ease;
+
+            .image-button-dark-overlay {
+                height: 100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                align-content: center;
+                text-align: center;
+
+                button {
+                    max-width: 80%;
+                }
+            }
+        }
+    }
+
+    .image-button-background-image:hover {
+        scale: 1.1;
+    }
+</style>

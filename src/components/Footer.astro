@@ -1,10 +1,65 @@
 ---
-
+import { Image } from "astro:assets";
+import FacebookLogo from "../../public/icons/facebook.svg";
 ---
 
-<footer
-    class="bg-green-950 text-center pt-20 mt-20 pb-6 px-5 max-sm:pb-3 max-sm:pt-8"
->
-    <!-- <Newsletter /> -->
-    
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <Image
+                src="/logo.png"
+                alt="europa2000"
+                width={128}
+                height={128}
+                format="webp"
+                class="logo-button"
+            />
+            <span>© 1992-2025 Európa 2000 Gimnázium</span>
+        </div>
+        <div class="footer-column">
+            <div>
+                <span class="footer-column-title">Key Links</span>
+            </div>
+            <div>
+                <span>Link1</span>
+            </div>
+            <div>
+                <span>Link2</span>
+            </div>
+            <div>
+                <span>Link3</span>
+            </div>
+        </div>
+        <div class="footer-column">
+            <span class="footer-column-title">Social</span>
+            <div class="social-icons-row">
+                <FacebookLogo/>
+            </div>
+        </div>
+    </div>
 </footer>
+<style>
+    .footer-container {
+        background-color: var(--Blue3);
+        height: 400px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-top: 40px;
+
+        .footer-column {
+            justify-items: center;
+            text-align: center;
+
+            span {
+                color: white;
+                font-family: "Raleway", sans-serif;
+                font-size: 16px;
+            }
+
+            .footer-column-title {
+                font-size: 24px;
+                color: #8e8e93;
+            }
+        }
+    }
+</style>
