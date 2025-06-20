@@ -1,21 +1,11 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { Image } from "astro:assets";
-import TestimonialSlider from "../function-components/TestimonialSlider";
 import Quote from "../sections/landing/Quote.astro";
-import Button from "../components/Button.astro";
+import Hero from "../sections/landing/Hero.astro";
+import Carousel from "../sections/landing/Carousel.astro";
+import KikVagyunk from "../sections/landing/KikVagyunk.astro";
 
-const testimonialList = [
-    { author: "joe1", organization: "apple", content: "very good job" },
-    { author: "joe2", organization: "apple", content: "very good job" },
-    { author: "joe3", organization: "apple", content: "very good job" },
-    { author: "joe4", organization: "apple", content: "very good job" },
-    { author: "joe5", organization: "apple", content: "very good job" },
-    { author: "joe6", organization: "apple", content: "very good job" },
-    { author: "joe7", organization: "apple", content: "very good job" },
-    { author: "joe8", organization: "apple", content: "very good job" },
-];
 ---
 
 <!doctype html>
@@ -29,225 +19,25 @@ const testimonialList = [
     </head>
     <body class="">
         <div class="header hero-element-hidden"><Header /></div>
-        <section class="hero-section">
-            <div class="hero-loading"></div>
-            <video
-                class="hero-video hero-element-hidden"
-                loop
-                muted
-                playsinline
-                autoplay="true"
-            >
-                <source src="hero-video.mp4" type="video/mp4" />
-            </video>
-            <div class="hero-content-container">
-                <div class="hero-title-container hero-title-loading">
-                    <Image
-                        src="/logo.png"
-                        alt="rhythm nation logo"
-                        width={128}
-                        height={128}
-                        format="webp"
-                        class="hidden-on-desktop logo-button hero-element-hidden"
-                    />
-                    <div class="hero-title">EUROPA2000</div>
-                    <div class="hero-subtitle">
-                        Jövőt építünk, lehetőségeket nyitunk
-                    </div>
-                </div>
-                <div
-                    class="hidden-on-mobile hero-key-link-container hero-element-hidden"
-                >
-                    <Button text="Key Link 1" color="#FFFFFF" />
-                    <Button text="Key Link 2" color="#FFFFFF" />
-                    <Button text="Key Link 3" color="#FFFFFF" />
-                </div>
-                <div
-                    class="hidden-on-mobile hero-bottom-row hero-element-hidden"
-                >
-                    <div class="hero-bottom-row-award-container">
-                        <Image
-                            src="/award.png"
-                            alt="award"
-                            width={128}
-                            height={128}
-                            format="webp"
-                            class="logo-button"
-                        />
-                    </div>
-                    <div class="hero-bottom-row-text-container">
-                        <div class="hero-bottom-row-text-title">
-                            Inspiráló tanulás, magabiztos jövő – itt kezdődik a
-                            siker
-                        </div>
-                        <div class="hero-bottom-row-text-content">
-                            Családias környezetben kínálunk digitális oktatást,
-                            angol-magyar kétnyelvű programot, film- és
-                            médiaoktatást, valamint nemzetközi vállalkozói
-                            képzést, hogy diákjaink a jövő kihívásaira
-                            felkészülten léphessenek a nagyvilágba.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="light-background">
-            <div class="blur-layer carousel-container">
-                <div class="hero-element-hidden carousel-title">
-                    <p class="blue-medium-text">
-                        Az Európa 2000 Gimnázium Zugló szívében várja a
-                        diákokat, hogy egy inspiráló közösség részei legyenek.
-                    </p>
-                </div>
-                <div class="carousel">
-                    <TestimonialSlider list={testimonialList} client:load />
-                </div>
-                <div class="flex flex-row justify-center gap-4 p-4">
-                    <div class="px-4 py-2">
-                        <Button text="Key Link 1" />
-                    </div>
-                    <div class="px-4 py-2">
-                        <Button text="Key Link 2" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <Quote />
+        <Hero />
+        <Carousel />
+        <div class="dark-background">
+            <Quote />
+            <KikVagyunk />
+        </div>
+        <div class="light-background" style="height: 100vh;">
+            <span>asd</span>
+        </div>
         <div class="footer hero-element-hidden"><Footer /></div>
     </body>
 </html>
 <script src="/src/scripts/landing.js"></script>
 <style>
-    .hero-loading {
-        background-color: var(--Blue3);
-        height: 100%;
-        background-image: url("/europa2000-menu-button.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 200px 200px;
-    }
-
-    .hero-title-loading {
-        padding-top: calc(50vh - 100px); /* center vertically */
-        transition: transform 0.5s ease-in-out;
-        transform: translateY(0); /* initial position */
-    }
-
-    .hero-title-loaded {
-        transform: translateY(-30vh); /* move up */
-    }
-
     .header,
     .footer {
         position: fixed;
         width: 100%;
         z-index: 3;
-    }
-
-    .hero-video {
-        height: 100%;
-        left: 0;
-        -o-object-fit: cover;
-        object-fit: cover;
-        -o-object-position: center 50%;
-        object-position: center 50%;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-    }
-
-    .hero-content-container {
-        width: 100%;
-        height: 100%;
-        color: #fff;
-        text-align: center;
-        font-family: "Sansation", sans-serif;
-        justify-self: anchor-center;
-        z-index: 2;
-        position: absolute;
-        display: grid;
-        background: linear-gradient(
-            117deg,
-            rgba(0, 0, 0, 0) 37.28%,
-            #000 99.97%
-        );
-
-        .hero-title-container {
-            justify-items: center;
-
-            .hero-title {
-                font-size: 38px;
-            }
-            .hero-subtitle {
-                font-size: 24px;
-            }
-        }
-
-        .hero-key-link-container {
-            margin-left: calc(100% - 200px);
-        }
-
-        .hero-bottom-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem; /* optional: adds spacing from screen edges */
-
-            .hero-bottom-row-award-container {
-            }
-
-            .hero-bottom-row-text-container {
-                width: 40vw;
-                text-align: left;
-                display: grid;
-                row-gap: 8px;
-
-                .hero-bottom-row-text-title {
-                    font-size: 24px;
-                }
-
-                .hero-bottom-row-text-content {
-                    font-size: 16px;
-                }
-            }
-        }
-    }
-
-    .light-background {
-        background-color: var(--light-background-color);
-        background-image: url("/europa2000-menu-button.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 200px 200px;
-
-        .blur-layer {
-            backdrop-filter: blur(5px);
-            height: 100%;
-        }
-    }
-
-    .blue-medium-text {
-        color: var(--Blue4);
-        font-family: "Sansation", sans-serif;
-        font-size: 24px;
-    }
-
-    .carousel-container {
-        height: 100%;
-        display: grid;
-        grid-template-rows: 25fr 50fr 25fr;
-        justify-items: center;
-
-        .carousel-title {
-            text-align: center;
-            align-content: end;
-            width: 80vw;
-        }
-
-        .carousel {
-            width: 80vw;
-        }
     }
 
     section {
@@ -284,5 +74,5 @@ const testimonialList = [
         .hidden {
             transition: none;
         }
-    }    
+    }
 </style>

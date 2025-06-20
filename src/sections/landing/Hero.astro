@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import Button from "../../components/Button.astro";
+---
+
+<section class="hero-section">
+    <div class="hero-loading"></div>
+    <video
+        class="hero-video hero-element-hidden"
+        loop
+        muted
+        playsinline
+        autoplay="true"
+    >
+        <source src="hero-video.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content-container">
+        <div class="hero-title-container hero-title-loading">
+            <Image
+                src="/logo.png"
+                alt="rhythm nation logo"
+                width={128}
+                height={128}
+                format="webp"
+                class="hidden-on-desktop logo-button hero-element-hidden"
+            />
+            <div class="hero-title">EUROPA2000</div>
+            <div class="hero-subtitle">
+                Jövőt építünk, lehetőségeket nyitunk
+            </div>
+        </div>
+        <div
+            class="hidden-on-mobile hero-key-link-container hero-element-hidden"
+        >
+            <Button text="Key Link 1" color="#FFFFFF" />
+            <Button text="Key Link 2" color="#FFFFFF" />
+            <Button text="Key Link 3" color="#FFFFFF" />
+        </div>
+        <div class="hidden-on-mobile hero-bottom-row hero-element-hidden">
+            <div class="hero-bottom-row-award-container">
+                <Image
+                    src="/award.png"
+                    alt="award"
+                    width={128}
+                    height={128}
+                    format="webp"
+                    class="logo-button"
+                />
+            </div>
+            <div class="hero-bottom-row-text-container">
+                <div class="hero-bottom-row-text-title">
+                    Inspiráló tanulás, magabiztos jövő – itt kezdődik a siker
+                </div>
+                <div class="hero-bottom-row-text-content">
+                    Családias környezetben kínálunk digitális oktatást,
+                    angol-magyar kétnyelvű programot, film- és médiaoktatást,
+                    valamint nemzetközi vállalkozói képzést, hogy diákjaink a
+                    jövő kihívásaira felkészülten léphessenek a nagyvilágba.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/src/scripts/landing.js"></script>
+<style>
+    .hero-section {
+        place-items: unset;
+        align-content: unset;
+    }
+
+    .hero-loading {
+        background-color: var(--Blue3);
+        height: 100%;
+        background-image: url("/europa2000-menu-button.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 200px 200px;
+    }
+
+    .hero-title-loading {
+        padding-top: calc(50vh - 100px); /* center vertically */
+        transition: transform 0.5s ease-in-out;
+        transform: translateY(0); /* initial position */
+    }
+
+    .hero-title-loaded {
+        transform: translateY(-30vh); /* move up */
+    }
+
+    .hero-video {
+        height: 100%;
+        left: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center 50%;
+        object-position: center 50%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .hero-content-container {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-align: center;
+        font-family: "Sansation", sans-serif;
+        justify-self: anchor-center;
+        z-index: 2;
+        position: absolute;
+        display: grid;
+        background: linear-gradient(
+            117deg,
+            rgba(0, 0, 0, 0) 37.28%,
+            #000 99.97%
+        );
+
+        .hero-title-container {
+            justify-items: center;
+
+            .hero-title {
+                font-size: 38px;
+            }
+            .hero-subtitle {
+                font-size: 24px;
+            }
+        }
+
+        .hero-key-link-container {
+            margin-left: calc(100% - 200px);
+        }
+
+        .hero-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem; /* optional: adds spacing from screen edges */
+
+            .hero-bottom-row-award-container {
+            }
+
+            .hero-bottom-row-text-container {
+                width: 40vw;
+                text-align: left;
+                display: grid;
+                row-gap: 8px;
+
+                .hero-bottom-row-text-title {
+                    font-size: 24px;
+                }
+
+                .hero-bottom-row-text-content {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .hero-element-hidden {
+        opacity: 0;
+        filter: blur(5px);
+        transition: ease-in 1s;
+        transition-delay: 0.5s;
+    }
+
+    .hero-element-shown {
+        opacity: 1;
+        filter: blur(0);
+    }
+</style>

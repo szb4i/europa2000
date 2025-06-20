@@ -1,0 +1,192 @@
+---
+
+---
+<div class="kik-vagyunk-section">
+    <div class="image-zoom-container center-image">
+        <div class="gsap-image image-background image-1">
+            <div class="overlay-text-container">
+                <div class="overlay-text-title">Kik Vagyunk?</div>
+                <div class="overlay-text-paragraph">1992 óta fogadjuk az általános iskolából érkező diákokat alapítványi iskolaként, ahol biztonságos és inspiráló környezetben készítjük fel őket a jövőre. A tolerancia, a nyitottság és az esélyteremtés alapelvei mentén dolgozunk, miközben kiemelten fejlesztjük az alkalmazható készségeket.?</div>
+            </div>
+        </div>
+        <div class="gsap-image image-background image-2 hidden-images">
+            <div class="overlay-text-container">
+                <div class="overlay-text-paragraph">Egyedi programjaink, mint a „7 szokás” életvezetési program, valamint digitális és élményalapú oktatási módszereink segítik a diákok fejlődését. Nemzetközi kapcsolataink, például az Erasmus+ és Határtalanul programok, lehetőséget nyújtanak a világ felfedezésére.</div>
+            </div>
+        </div>
+        <div class="gsap-image image-background image-3 hidden-images">
+            <div class="overlay-text-container">
+                <div class="overlay-text-paragraph">Közösségünket a támogató légkör és a diák-tanár partneri együttműködés teszi különlegessé – célunk, hogy tanulóink sikeres és boldog felnőttekké váljanak.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+    const imageZoomContainerElement = document.querySelector(
+        ".image-zoom-container",
+    );
+    gsap.to(".gsap-image", {
+        ease: "none",
+        zoom: 2,
+        scrollTrigger: {
+            trigger: imageZoomContainerElement,
+            pin: imageZoomContainerElement,
+            start: "center center",
+            end: "center top",
+            scrub: true,
+            invalidateOnRefresh: true,
+            onToggle: (params) => {
+                if (!params.isActive && window.scrollY >= params.end) {
+                    document
+                        .querySelectorAll(".gsap-image")
+                        .forEach((element) => {
+                            element.classList.remove("hidden-images");
+                        });
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.remove("center-image");
+                        });
+                        document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.add("carousel-mode");
+                        });
+                } else if (params.isActive && window.scrollY <= params.end) {
+                    document
+                        .querySelectorAll(".gsap-image")
+                        .forEach((element, i) => {
+                            if (0 < i) {
+                                element.classList.add("hidden-images");
+                            }
+                        });
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.add("center-image");
+                        });
+
+                    document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.remove("carousel-mode");
+                        });
+                }
+            },
+        },
+    });
+
+    gsap.to(".gsap-image", {
+        ease: "none",
+        x: () => -1*window.innerWidth,
+        scrollTrigger: {
+            trigger: imageZoomContainerElement,
+            pin: imageZoomContainerElement,
+            start: "1 top",
+            end: () => `+=${1*window.innerWidth}`,
+            scrub: true,
+            snap: {
+                snapTo: [0, 0.5, 1],
+                duration: 1,
+                delay: 0.025
+            }
+        },
+    });
+</script>
+<style>
+    .kik-vagyunk-section {
+        height: calc(150vh + 100vw);
+        display: flex;
+        width: 100%;
+    }
+
+    .image-background {
+        --border-radius: 24px;
+        background-size: cover !important;
+        background-position: center !important;
+        border-radius: var(--border-radius);
+    }
+
+    .carousel-mode .image-background {
+        border-radius: 0px;
+    }
+
+    .image-1 {
+        background: url("/landing/kik-vagyunk/kik-vagyunk-1.jpg");
+    }
+
+    .image-2 {
+        background: url("/landing/kik-vagyunk/kik-vagyunk-2.jpg");
+    }
+
+    .image-3 {
+        background: url("/landing/kik-vagyunk/kik-vagyunk-3.jpg");
+    }
+
+    .overlay-text-container {
+        background: rgba(0, 0, 0, 0.5);
+        height: 50vh;
+        width: 50vw;
+        font-family: "Raleway", sans-serif;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;      /* Horizontal centering */
+        justify-content: center;  /* Vertical centering */
+        border-radius: var(--border-radius);
+
+        .overlay-text-title {
+            font-size: 38px;
+        }
+        
+        .overlay-text-paragraph {
+            position: absolute;
+            bottom: 0;
+            padding: 6rem 4rem;
+            opacity: 0;
+        }
+    }
+
+    .carousel-mode .overlay-text-container {
+        border-radius: 0px;
+        /* background: linear-gradient(183deg, rgba(0, 0, 0, 0.00) 41.8%, rgba(0, 0, 0, 0.51) 51.46%, #000 101.21%);; */
+
+        .overlay-text-title {
+            animation: fadeOut 0.75s forwards;
+        }
+
+        .overlay-text-paragraph {
+            animation: fadeIn 0.75s forwards;
+        }
+    }
+
+    .image-zoom-container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .center-image {
+        justify-content: center;
+    }
+
+    .hidden-images {
+        display: none;
+    }
+
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
