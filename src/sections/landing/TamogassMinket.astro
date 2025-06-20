@@ -1,0 +1,94 @@
+---
+import Button from "../../components/Button.astro";
+---
+
+<section class="tamogass-minket">
+    <div class="tamogass-minket-image-container">
+        <div class="image-background">
+            <div class="overlay-text-container hidden-texts">
+                <div class="overlay-text-title">
+                    <span>Támogass Minket!</span>
+                </div>
+                <div class="overlay-text-subtitle">
+                    <span
+                        >Ajánlja fel adója 1%-át, és legyen részese diákjaink
+                        sikereinek!</span
+                    >
+                </div>
+                <div class="overlay-text-paragraph">
+                    <span
+                        >Felajánlása az Európa 2000 Oktatási Központ
+                        Alapítványát segíti, amely közhasznú szervezetként a
+                        diákok fejlődését helyezi előtérbe. Az így befolyt
+                        összegekből modern digitális eszközöket, innovatív
+                        tanulási alkalmazásokat és fejlesztéseket biztosítunk,
+                        hogy tanulóink a legkorszerűbb tudással és készségekkel
+                        váljanak a jövő sikeres felnőttjeivé.</span
+                    >
+                </div>
+                <Button text="Támogatom" color="#FFFFFF" />
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .tamogass-minket {
+        .tamogass-minket-image-container {
+            width: 75vw;
+            height: 75vh;
+            border-radius: 16px;
+            overflow: hidden;
+
+            .image-background {
+                height: 100%;
+                width: 100%;
+                background-image: url("/landing/tamogass-minket/tamogass-minket.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: scale 0.5s ease;
+                
+                .overlay-text-container {
+                    background: linear-gradient(
+                        176deg,
+                        rgba(0, 0, 0, 0.26) 12.05%,
+                        #000 94.46%
+                        );
+                    backdrop-filter: blur(6px);
+                    height: 100%;
+                    width: 100%;
+                    padding: 0 10%;
+                    align-content: center;
+                    justify-items: center;
+
+                    .overlay-text-title {
+                        padding-bottom: 32px;
+                        span {
+                            color: #ffffff;
+                            font-family: "Sansation", sans-serif;
+                            font-size: 38px;
+                        }
+                    }
+
+                    .overlay-text-subtitle {
+                        padding-bottom: 32px;
+                        span {
+                            color: #ffffff;
+                            font-family: "Sansation", sans-serif;
+                            font-size: 24px;
+                        }
+                    }
+
+                    .overlay-text-paragraph {
+                        padding-bottom: 32px;
+                        span {
+                            color: #ffffff;
+                            font-family: "Raleway", sans-serif;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+</style>
