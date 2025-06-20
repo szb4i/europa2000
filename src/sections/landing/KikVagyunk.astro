@@ -6,23 +6,23 @@
         <div class="gsap-image image-background image-1">
             <div class="overlay-text-container">
                 <div class="overlay-text-title">Kik Vagyunk?</div>
+                <div class="overlay-text-paragraph">1992 óta fogadjuk az általános iskolából érkező diákokat alapítványi iskolaként, ahol biztonságos és inspiráló környezetben készítjük fel őket a jövőre. A tolerancia, a nyitottság és az esélyteremtés alapelvei mentén dolgozunk, miközben kiemelten fejlesztjük az alkalmazható készségeket.?</div>
             </div>
         </div>
         <div class="gsap-image image-background image-2 hidden-images">
             <div class="overlay-text-container">
-                <div class="overlay-text-title">Kik Vagyunk?</div>
+                <div class="overlay-text-paragraph">Egyedi programjaink, mint a „7 szokás” életvezetési program, valamint digitális és élményalapú oktatási módszereink segítik a diákok fejlődését. Nemzetközi kapcsolataink, például az Erasmus+ és Határtalanul programok, lehetőséget nyújtanak a világ felfedezésére.</div>
             </div>
         </div>
         <div class="gsap-image image-background image-3 hidden-images">
             <div class="overlay-text-container">
-                <div class="overlay-text-title">Kik Vagyunk?</div>
+                <div class="overlay-text-paragraph">Közösségünket a támogató légkör és a diák-tanár partneri együttműködés teszi különlegessé – célunk, hogy tanulóink sikeres és boldog felnőttekké váljanak.</div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    import "/src/scripts/horizontalScroll.js";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -40,7 +40,6 @@
             end: "center top",
             scrub: true,
             invalidateOnRefresh: true,
-            markers: true,
             onToggle: (params) => {
                 if (!params.isActive && window.scrollY >= params.end) {
                     document
@@ -52,6 +51,11 @@
                         .querySelectorAll(".image-zoom-container")
                         .forEach((element) => {
                             element.classList.remove("center-image");
+                        });
+                        document
+                        .querySelectorAll(".image-zoom-container")
+                        .forEach((element) => {
+                            element.classList.add("carousel-mode");
                         });
                 } else if (params.isActive && window.scrollY <= params.end) {
                     document
@@ -66,30 +70,7 @@
                         .forEach((element) => {
                             element.classList.add("center-image");
                         });
-                }
-            },
-        },
-    });
 
-    gsap.to(".gsap-image", {
-        ease: "none",
-        x: () => "-200%",
-        scrollTrigger: {
-            trigger: imageZoomContainerElement,
-            pin: imageZoomContainerElement,
-            start: "1 top",
-            end: () => "+=200%",
-            scrub: true,
-            snap: [0, 0.5, 0.995],
-            markers: true,
-            onToggle: (params) => {
-                if (params.isActive) {
-                    document
-                        .querySelectorAll(".image-zoom-container")
-                        .forEach((element) => {
-                            element.classList.add("carousel-mode");
-                        });
-                } else {
                     document
                         .querySelectorAll(".image-zoom-container")
                         .forEach((element) => {
@@ -99,10 +80,27 @@
             },
         },
     });
+
+    gsap.to(".gsap-image", {
+        ease: "none",
+        x: () => -1*window.innerWidth,
+        scrollTrigger: {
+            trigger: imageZoomContainerElement,
+            pin: imageZoomContainerElement,
+            start: "1 top",
+            end: () => `+=${1*window.innerWidth}`,
+            scrub: true,
+            snap: {
+                snapTo: [0, 0.5, 1],
+                duration: 1,
+                delay: 0.025
+            }
+        },
+    });
 </script>
 <style>
     .kik-vagyunk-section {
-        height: 300vw;
+        height: calc(150vh + 100vw);
         display: flex;
         width: 100%;
     }
@@ -137,17 +135,34 @@
         font-family: "Raleway", sans-serif;
         color: white;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        align-items: center;      /* Horizontal centering */
+        justify-content: center;  /* Vertical centering */
         border-radius: var(--border-radius);
 
         .overlay-text-title {
             font-size: 38px;
         }
+        
+        .overlay-text-paragraph {
+            position: absolute;
+            bottom: 0;
+            padding: 6rem 4rem;
+            opacity: 0;
+        }
     }
 
     .carousel-mode .overlay-text-container {
         border-radius: 0px;
+        /* background: linear-gradient(183deg, rgba(0, 0, 0, 0.00) 41.8%, rgba(0, 0, 0, 0.51) 51.46%, #000 101.21%);; */
+
+        .overlay-text-title {
+            animation: fadeOut 0.75s forwards;
+        }
+
+        .overlay-text-paragraph {
+            animation: fadeIn 0.75s forwards;
+        }
     }
 
     .image-zoom-container {
@@ -163,5 +178,15 @@
 
     .hidden-images {
         display: none;
+    }
+
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 </style>
