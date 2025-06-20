@@ -1,0 +1,71 @@
+---
+import ImageButton from "../../components/ImageButton.astro";
+---
+
+<section class="kepzeseink">
+    <div class="text-content">
+        <div class="title-container">
+            <span class="title-text">Képzéseink</span>
+        </div>
+        <div class="paragraph-container">
+            <span
+                >Az Európa 2000 Gimnázium sokszínű képzési palettája lehetőséget
+                kínál diákjainknak, hogy megtalálják az érdeklődési körükhöz és
+                céljaikhoz legjobban illeszkedő programokat. Ismerd meg
+                képzéseinket részletesebben!
+            </span>
+        </div>
+    </div>
+    <div class="image-button-row-container">
+        <ImageButton
+            buttonText="4 évfolyamos általános gimnázium"
+            buttonColor="#FFFFFF"
+            imageURL="/landing/kepzeseink/4-evfolyamos.jpg"
+        />
+        <ImageButton
+            buttonText="6 évfolyamos általános gimnázium"
+            buttonColor="#FFFFFF"
+            imageURL="/landing/kepzeseink/6-evfolyamos.jpg"
+        />
+    </div>
+</section>
+<style>
+    .kepzeseink {
+        place-items: unset;
+        align-content: unset;
+        grid-template-rows: 2fr 3fr;
+
+        .text-content {
+            align-content: center;
+            padding: 0% 10%;
+        }
+
+        .title-container {
+            display: grid;
+            text-align: center;
+            padding-bottom: 16px;
+
+            span {
+                align-self: end;
+                color: var(--Blue4);
+                font-family: "Sansation", sans-serif;
+                font-size: 38px;
+            }
+        }
+
+        .paragraph-container {
+            text-align: center;
+
+            span {
+                color: var(--Blue4);
+                font-family: "Raleway", sans-serif;
+                font-size: 24px;
+            }
+        }
+
+        .image-button-row-container {
+            display: flex;
+            justify-content: center;
+        }
+    }
+</style>
