@@ -6,9 +6,9 @@ import ImageButton from "../../components/ImageButton.astro";
 <section class="kepzeseink">
     <div class="text-content">
         <div class="title-container">
-            <span class="title-text">Képzéseink</span>
+            <span class="title-text-dark">Képzéseink</span>
         </div>
-        <div class="paragraph-container">
+        <div class="paragraph-container large-paragraph-text-dark">
             <span
                 >Az Európa 2000 Gimnázium sokszínű képzési palettája lehetőséget
                 kínál diákjainknak, hogy megtalálják az érdeklődési körükhöz és
@@ -48,25 +48,23 @@ import ImageButton from "../../components/ImageButton.astro";
 
             span {
                 align-self: end;
-                color: var(--Blue4);
-                font-family: "Sansation", sans-serif;
-                font-size: 38px;
             }
         }
 
         .paragraph-container {
             text-align: center;
-
-            span {
-                color: var(--Blue4);
-                font-family: "Raleway", sans-serif;
-                font-size: 24px;
-            }
         }
 
         .image-button-row-container {
             display: flex;
             justify-content: center;
         }
+
+         @media (width <=770px) {
+        .image-button-row-container {
+            display: unset;
+            justify-items: center;
+        }
+    }
     }
 </style>

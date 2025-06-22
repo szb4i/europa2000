@@ -56,9 +56,13 @@ const menuButtonSize = isMobile ? "70px" : "76px";
         }
     }
 
-    .menu-button:hover {
-        transform: scale(1.1);
+    @media (width >=1200px) {
+        .menu-button:hover {
+            transform: scale(1.1);
+        }
+    }
 
+    .menu-button:hover {
         .line-middle {
             width: 60px;
         }

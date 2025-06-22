@@ -16,18 +16,18 @@ const {
 } = Astro.props;
 ---
 
-<div class="split-slide-container">
-    {isTextOnRight ? <div
+<div class="split-slide-container" style={`direction: ${isTextOnRight ? 'ltr' : 'rtl'};`}>
+    <div
         class="split-slide-image-side"
         style={`background-image: url(${imageURL});`}
     >
-    </div> : ''} 
+    </div>
     <div class="split-slide-logo-side">
         <div class="split-slide-text-container">
-            <div class="split-slide-text-title">
+            <div class="split-slide-text-title title-text-dark">
                 <span>{textTitle}</span>
             </div>
-            <div class="split-slide-text-paragraph">
+            <div class="split-slide-text-paragraph large-paragraph-text-dark">
                 <span> {textParagraph}</span>
             </div>
         </div>
@@ -41,11 +41,6 @@ const {
             />
         </div>
     </div>
-    {!isTextOnRight ? <div
-        class="split-slide-image-side"
-        style={`background-image: url(${imageURL});`}
-    >
-    </div> : ''} 
 </div>
 <style>
     .split-slide-container {
@@ -55,30 +50,24 @@ const {
         background: var(--light-background-color);
     }
 
+    @media (width <=770px) {
+        .split-slide-container {
+            grid-template-columns: unset;
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+
     .split-slide-logo-side {
         display: grid;
         grid-template-rows: 3fr 2fr;
+        direction: ltr;
 
         .split-slide-text-container {
             align-content: center;
             padding: 0% 10%;
 
             .split-slide-text-title {
-                padding-bottom: 16px;
-
-                span {
-                    color: var(--Blue4);
-                    font-family: "Sansation", sans-serif;
-                    font-size: 38px;
-                }
-            }
-
-            .split-slide-text-paragraph {
-                span {
-                    color: var(--Blue4);
-                    font-family: "Raleway", sans-serif;
-                    font-size: 24px;
-                }
+                padding: 16px 0px;
             }
         }
 
