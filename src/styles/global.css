@@ -9,16 +9,166 @@
     --Blue4: #00003C;
     --Green: #8BC444;
 
-    @media (width <= 40rem) {      
+    @media (width <=770px) {
         .hidden-on-mobile {
             display: none !important;
-        }  
+        }
+
+        .title-text-dark {
+            font-size: 24px;
+            color: var(--Blue4);
+            font-family: "Sansation", sans-serif;
+        }
+
+        .subtitle-text-dark {
+            font-size: 16px;
+            color: var(--Blue4);
+            font-family: "Sansation", sans-serif;
+        }
+
+        .paragraph-text-dark {
+            font-size: 16px;
+            color: var(--Blue4);
+            font-family: "Raleway", sans-serif;
+        }
+
+        .large-paragraph-text-dark {
+            font-size: 16px;
+            color: var(--Blue4);
+            font-family: "Raleway", sans-serif;
+        }
+
+        .title-text-light {
+            font-size: 24px;
+            color: #FFFFFF;
+            font-family: "Sansation", sans-serif;
+        }
+
+        .subtitle-text-light {
+            font-size: 16px;
+            color: #FFFFFF;
+            font-family: "Sansation", sans-serif;
+        }
+
+        .paragraph-text-light {
+            font-size: 16px;
+            color: #FFFFFF;
+            font-family: "Raleway", sans-serif;
+        }
+
+        .large-paragraph-text-light {
+            font-size: 16px;
+            color: #FFFFFF;
+            font-family: "Raleway", sans-serif;
+        }
     }
 
-    @media (width > 40rem) {      
+    @media (770px < width) and (width < 1200px) {
+        .hidden-on-tablet {
+            display: none !important;
+        }
+
+        .title-text-dark {
+            font-size: 32px;
+            color: var(--Blue4);
+            font-family: "Sansation", sans-serif;
+        }
+
+        .subtitle-text-dark {
+            font-size: 24px;
+            color: var(--Blue4);
+            font-family: "Sansation", sans-serif;
+        }
+
+        .paragraph-text-dark {
+            font-size: 16px;
+            color: var(--Blue4);
+            font-family: "Raleway", sans-serif;
+        }
+
+        .large-paragraph-text-dark {
+            font-size: 24px;
+            color: var(--Blue4);
+            font-family: "Raleway", sans-serif;
+        }
+
+        .title-text-light {
+            font-size: 32px;
+            color: #FFFFFF;
+            font-family: "Sansation", sans-serif;
+        }
+
+        .subtitle-text-light {
+            font-size: 24px;
+            color: #FFFFFF;
+            font-family: "Sansation", sans-serif;
+        }
+
+        .paragraph-text-light {
+            font-size: 16px;
+            color: #FFFFFF;
+            font-family: "Raleway", sans-serif;
+        }
+
+        .large-paragraph-text-light {
+            font-size: 24px;
+            color: #FFFFFF;
+            font-family: "Raleway", sans-serif;
+        }
+    }
+
+    @media (1200px <=width) {
         .hidden-on-desktop {
             display: none !important;
-        }  
+        }
+
+        .title-text-dark {
+            font-size: 32px;
+            color: var(--Blue4);
+            font-family: "Sansation", sans-serif;
+        }
+
+        .subtitle-text-dark {
+            font-size: 24px;
+            color: var(--Blue4);
+            font-family: "Sansation", sans-serif;
+        }
+
+        .paragraph-text-dark {
+            font-size: 16px;
+            color: var(--Blue4);
+            font-family: "Raleway", sans-serif;
+        }
+
+        .large-paragraph-text-dark {
+            font-size: 24px;
+            color: var(--Blue4);
+            font-family: "Raleway", sans-serif;
+        }
+
+        .title-text-light {
+            font-size: 32px;
+            color: #FFFFFF;
+            font-family: "Sansation", sans-serif;
+        }
+
+        .subtitle-text-light {
+            font-size: 24px;
+            color: #FFFFFF;
+            font-family: "Sansation", sans-serif;
+        }
+
+        .paragraph-text-light {
+            font-size: 16px;
+            color: #FFFFFF;
+            font-family: "Raleway", sans-serif;
+        }
+
+        .large-paragraph-text-light {
+            font-size: 24px;
+            color: #FFFFFF;
+            font-family: "Raleway", sans-serif;
+        }
     }
 
     section {
@@ -46,10 +196,10 @@
         opacity: 1;
         filter: blur(0);
         transform: translateX(0);
-    } 
+    }
 
     .hero-section {
         place-items: unset;
         align-content: unset;
-    }    
+    }
 }

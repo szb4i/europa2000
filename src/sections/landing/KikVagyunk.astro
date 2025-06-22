@@ -5,18 +5,18 @@
     <div class="image-zoom-container center-image">
         <div class="gsap-image image-background image-1">
             <div class="overlay-text-container">
-                <div class="overlay-text-title">Kik Vagyunk?</div>
-                <div class="overlay-text-paragraph">1992 óta fogadjuk az általános iskolából érkező diákokat alapítványi iskolaként, ahol biztonságos és inspiráló környezetben készítjük fel őket a jövőre. A tolerancia, a nyitottság és az esélyteremtés alapelvei mentén dolgozunk, miközben kiemelten fejlesztjük az alkalmazható készségeket.?</div>
+                <div class="title-text-light overlay-text-title">Kik Vagyunk?</div>
+                <div class="large-paragraph-text-light overlay-text-paragraph">1992 óta fogadjuk az általános iskolából érkező diákokat alapítványi iskolaként, ahol biztonságos és inspiráló környezetben készítjük fel őket a jövőre. A tolerancia, a nyitottság és az esélyteremtés alapelvei mentén dolgozunk, miközben kiemelten fejlesztjük az alkalmazható készségeket.?</div>
             </div>
         </div>
         <div class="gsap-image image-background image-2 hidden-images">
             <div class="overlay-text-container">
-                <div class="overlay-text-paragraph">Egyedi programjaink, mint a „7 szokás” életvezetési program, valamint digitális és élményalapú oktatási módszereink segítik a diákok fejlődését. Nemzetközi kapcsolataink, például az Erasmus+ és Határtalanul programok, lehetőséget nyújtanak a világ felfedezésére.</div>
+                <div class="large-paragraph-text-light overlay-text-paragraph">Egyedi programjaink, mint a „7 szokás” életvezetési program, valamint digitális és élményalapú oktatási módszereink segítik a diákok fejlődését. Nemzetközi kapcsolataink, például az Erasmus+ és Határtalanul programok, lehetőséget nyújtanak a világ felfedezésére.</div>
             </div>
         </div>
         <div class="gsap-image image-background image-3 hidden-images">
             <div class="overlay-text-container">
-                <div class="overlay-text-paragraph">Közösségünket a támogató légkör és a diák-tanár partneri együttműködés teszi különlegessé – célunk, hogy tanulóink sikeres és boldog felnőttekké váljanak.</div>
+                <div class="large-paragraph-text-light overlay-text-paragraph">Közösségünket a támogató légkör és a diák-tanár partneri együttműködés teszi különlegessé – célunk, hogy tanulóink sikeres és boldog felnőttekké váljanak.</div>
             </div>
         </div>
     </div>
@@ -27,75 +27,89 @@
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
-    const imageZoomContainerElement = document.querySelector(
-        ".image-zoom-container",
-    );
-    gsap.to(".gsap-image", {
-        ease: "none",
-        zoom: 2,
-        scrollTrigger: {
-            trigger: imageZoomContainerElement,
-            pin: imageZoomContainerElement,
-            start: "center center",
-            end: "center top",
-            scrub: true,
-            invalidateOnRefresh: true,
-            onToggle: (params) => {
-                if (!params.isActive && window.scrollY >= params.end) {
-                    document
-                        .querySelectorAll(".gsap-image")
-                        .forEach((element) => {
-                            element.classList.remove("hidden-images");
-                        });
-                    document
-                        .querySelectorAll(".image-zoom-container")
-                        .forEach((element) => {
-                            element.classList.remove("center-image");
-                        });
+    gsap.matchMedia().add('(min-width: 1200px)', () => {
+        const imageZoomContainerElement = document.querySelector(
+            ".image-zoom-container",
+        );
+        gsap.to(".gsap-image", {
+            ease: "none",
+            zoom: 2,
+            scrollTrigger: {
+                trigger: imageZoomContainerElement,
+                pin: imageZoomContainerElement,
+                start: "center center",
+                end: "center top",
+                scrub: true,
+                invalidateOnRefresh: true,
+                onToggle: (params) => {
+                    if (!params.isActive && window.scrollY >= params.end) {
                         document
-                        .querySelectorAll(".image-zoom-container")
-                        .forEach((element) => {
-                            element.classList.add("carousel-mode");
-                        });
-                } else if (params.isActive && window.scrollY <= params.end) {
-                    document
-                        .querySelectorAll(".gsap-image")
-                        .forEach((element, i) => {
-                            if (0 < i) {
-                                element.classList.add("hidden-images");
-                            }
-                        });
-                    document
-                        .querySelectorAll(".image-zoom-container")
-                        .forEach((element) => {
-                            element.classList.add("center-image");
-                        });
+                            .querySelectorAll(".gsap-image")
+                            .forEach((element) => {
+                                element.classList.remove("hidden-images");
+                            });
+                        document
+                            .querySelectorAll(".image-zoom-container")
+                            .forEach((element) => {
+                                element.classList.remove("center-image");
+                            });
+                            document
+                            .querySelectorAll(".image-zoom-container")
+                            .forEach((element) => {
+                                element.classList.add("carousel-mode");
+                            });
+                    } else if (params.isActive && window.scrollY <= params.end) {
+                        document
+                            .querySelectorAll(".gsap-image")
+                            .forEach((element, i) => {
+                                if (0 < i) {
+                                    element.classList.add("hidden-images");
+                                }
+                            });
+                        document
+                            .querySelectorAll(".image-zoom-container")
+                            .forEach((element) => {
+                                element.classList.add("center-image");
+                            });
+    
+                        document
+                            .querySelectorAll(".image-zoom-container")
+                            .forEach((element) => {
+                                element.classList.remove("carousel-mode");
+                            });
+                    }
+                },
+            },
+        });
 
-                    document
-                        .querySelectorAll(".image-zoom-container")
-                        .forEach((element) => {
-                            element.classList.remove("carousel-mode");
-                        });
+        gsap.to(['.kik-vagyunk-section .overlay-text-title', '.kik-vagyunk-section .overlay-text-paragraph'], {
+            ease: "none",
+            zoom: 0.5,
+            scrollTrigger: {
+                trigger: imageZoomContainerElement,
+                start: "center center",
+                end: "center top",
+                scrub: true,
+                invalidateOnRefresh: true
+            }
+        });
+    
+        gsap.to(".gsap-image", {
+            ease: "none",
+            x: () => -1*window.innerWidth,
+            scrollTrigger: {
+                trigger: imageZoomContainerElement,
+                pin: imageZoomContainerElement,
+                start: "1 top",
+                end: () => `+=${1*window.innerWidth}`,
+                scrub: true,
+                snap: {
+                    snapTo: [0, 0.5, 1],
+                    duration: 1,
+                    delay: 0.025
                 }
             },
-        },
-    });
-
-    gsap.to(".gsap-image", {
-        ease: "none",
-        x: () => -1*window.innerWidth,
-        scrollTrigger: {
-            trigger: imageZoomContainerElement,
-            pin: imageZoomContainerElement,
-            start: "1 top",
-            end: () => `+=${1*window.innerWidth}`,
-            scrub: true,
-            snap: {
-                snapTo: [0, 0.5, 1],
-                duration: 1,
-                delay: 0.025
-            }
-        },
+        });
     });
 </script>
 <style>
@@ -103,6 +117,12 @@
         height: calc(150vh + 100vw);
         display: flex;
         width: 100%;
+    }
+
+    @media (width <= 1200px) {
+        .kik-vagyunk-section {
+            height: 200vh;
+        }
     }
 
     .image-background {
@@ -132,17 +152,11 @@
         background: rgba(0, 0, 0, 0.5);
         height: 50vh;
         width: 50vw;
-        font-family: "Raleway", sans-serif;
-        color: white;
         display: flex;
         flex-direction: column;
         align-items: center;      /* Horizontal centering */
         justify-content: center;  /* Vertical centering */
         border-radius: var(--border-radius);
-
-        .overlay-text-title {
-            font-size: 38px;
-        }
         
         .overlay-text-paragraph {
             position: absolute;
@@ -188,5 +202,37 @@
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
+    }
+
+    @media (width < 1200px) {
+        .image-zoom-container {
+            flex-direction: column;
+        }
+
+        .image-background {
+            border-radius: 0px;
+        }
+        
+        .overlay-text-container {
+            border-radius: 0px;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .overlay-text-title {
+            display: none;
+        }
+
+        .overlay-text-paragraph {
+            opacity: 1 !important;
+        }
+
+        .hidden-images {
+            display: unset !important;
+        }
+
+        .overlay-text-paragraph {
+            position: unset !important;
+        }
     }
 </style>

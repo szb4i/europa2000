@@ -4,7 +4,7 @@ import Card from "../../components/Card.astro";
 ---
 
 <div class="kiemelt-hireink-container">
-    <div class="title-container">
+    <div class="title-container title-text-dark">
         <span>Kiemelt Híreink</span>
     </div>
     <div class="news-container">
@@ -22,13 +22,6 @@ import Card from "../../components/Card.astro";
 
         .title-container {
             text-align: center;
-
-            span {
-                align-self: end;
-                color: var(--Blue4);
-                font-family: "Sansation", sans-serif;
-                font-size: 38px;
-            }
         }
 
         .news-container {
@@ -36,6 +29,18 @@ import Card from "../../components/Card.astro";
             gap: 40px;
             justify-content: center;
             padding: 36px 0px;
+        }
+
+        @media (width <=770px) {
+            .news-container .card-container:nth-child(n+2) {
+                display: none;
+            }
+        }
+
+        @media (width > 770px) and (width <= 1200px) {
+            .news-container .card-container:nth-child(n+3) {
+                display: none;
+            }
         }
     }
 

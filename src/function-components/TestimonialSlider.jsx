@@ -43,8 +43,8 @@ const TestimonialSlider = ({ list }) => {
             </div> */}
             <div className={'image-container mx-4 my-16 rounded-xl text-center shadow ' + (i % 2 === 0 ? 'rotate-2' : '-rotate-2')}>
               <div className="overlay-text-container overlay-text-container-padding-top-on-hover rounded-xl">
-                <div className="overlay-text-title">Title</div>
-                <div className="overlay-text-description">A digitális tanulás nemcsak eszköz, hanem az élményalapú oktatás alapköve. Egyedülálló technológiai háttérrel készítjük fel diákjainkat a jövő kihívásaira.</div>
+                <div className="overlay-text-title subtitle-text-light">Title</div>
+                <div className="overlay-text-description paragraph-text-light">A digitális tanulás nemcsak eszköz, hanem az élményalapú oktatás alapköve. Egyedülálló technológiai háttérrel készítjük fel diákjainkat a jövő kihívásaira.</div>
               </div>
             </div>
           </SwiperSlide>

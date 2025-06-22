@@ -24,8 +24,8 @@ import Button from "../../components/Button.astro";
                 format="webp"
                 class="hidden-on-desktop logo-button hero-element-hidden"
             />
-            <div class="hero-title">EUROPA2000</div>
-            <div class="hero-subtitle">
+            <div class="hero-title title-text-light">EUROPA2000</div>
+            <div class="hero-subtitle subtitle-text-light">
                 Jövőt építünk, lehetőségeket nyitunk
             </div>
         </div>
@@ -48,10 +48,10 @@ import Button from "../../components/Button.astro";
                 />
             </div>
             <div class="hero-bottom-row-text-container">
-                <div class="hero-bottom-row-text-title">
+                <div class="subtitle-text-light">
                     Inspiráló tanulás, magabiztos jövő – itt kezdődik a siker
                 </div>
-                <div class="hero-bottom-row-text-content">
+                <div class="paragraph-text-light">
                     Családias környezetben kínálunk digitális oktatást,
                     angol-magyar kétnyelvű programot, film- és médiaoktatást,
                     valamint nemzetközi vállalkozói képzést, hogy diákjaink a
@@ -103,7 +103,6 @@ import Button from "../../components/Button.astro";
     .hero-content-container {
         width: 100%;
         height: 100%;
-        color: #fff;
         text-align: center;
         font-family: "Sansation", sans-serif;
         justify-self: anchor-center;
@@ -118,13 +117,6 @@ import Button from "../../components/Button.astro";
 
         .hero-title-container {
             justify-items: center;
-
-            .hero-title {
-                font-size: 38px;
-            }
-            .hero-subtitle {
-                font-size: 24px;
-            }
         }
 
         .hero-key-link-container {
@@ -145,14 +137,6 @@ import Button from "../../components/Button.astro";
                 text-align: left;
                 display: grid;
                 row-gap: 8px;
-
-                .hero-bottom-row-text-title {
-                    font-size: 24px;
-                }
-
-                .hero-bottom-row-text-content {
-                    font-size: 16px;
-                }
             }
         }
     }

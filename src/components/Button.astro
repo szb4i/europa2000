@@ -16,7 +16,7 @@ const borderColorOpaque = hexToRgba(borderColor);
 
 ---
 
-<button class="toggler btn">{text}</button>
+<button class="large-paragraph-text-light toggler btn">{text}</button>
 <style define:vars={{ borderColor, borderColorOpaque }}>
     .toggler {
         --bgColor: transparent;
@@ -40,9 +40,7 @@ const borderColorOpaque = hexToRgba(borderColor);
         border: 1px solid var(--borderColorOpaque);
         cursor: pointer;
         position: relative;
-        font-family: "Raleway", sans-serif;
-        font-size: 24px;
-        color: var(--borderColor);
+        color: var(--borderColor) !important;
     }
 
     .btn:after,

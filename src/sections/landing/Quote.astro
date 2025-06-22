@@ -7,13 +7,13 @@ import '../../styles/dark-background.css';
 <section>
     <div class="quote-container">
         <div class="quote-text hidden-1s">
-            <span class="white-text"
+            <span class="title-text-light"
                 >Olyan iskolát álmodtam meg, ahol a saját gyerekem is
-            </span><span class="green-text">örömmel </span><span
-                class="white-text">tanulna.</span
+            </span><span class="title-text-light green-text">örömmel </span><span
+                class="title-text-light">tanulna.</span
             >
         </div>
-        <div class="quote-author hidden-2s">Papp András, igazgató</div>
+        <div class="paragraph-text-light quote-author hidden-2s">Papp András, igazgató</div>
     </div>
 </section>
 <script>
@@ -31,13 +31,10 @@ import '../../styles/dark-background.css';
 </script>
 <style>
     .quote-container {
-        color: #d1f8ef;
         width: 80vw;
 
         .quote-text {
-            font-family: "Sansation", sans-serif;
             text-align: center;
-            font-size: 38px;
             padding-bottom: 38px;
 
             .green-text {
@@ -53,21 +50,8 @@ import '../../styles/dark-background.css';
         }
 
         .quote-author {
-            font-family: "Raleway", sans-serif;
-            font-size: 20px;
             font-style: italic;
             text-align: end;
-        }
-
-        @media (width <= 40rem) {
-            .quote-text {
-                font-size: 24px;
-                padding-bottom: 24px;
-            }
-
-            .quote-author {
-                font-size: 16px;
-            }
         }
     }
 </style>
