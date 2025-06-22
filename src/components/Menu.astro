@@ -1,0 +1,58 @@
+---
+import MenuItem from "./MenuItem.astro"
+---
+
+<div class="menu-container menu-closed slide-in-500">
+    <div class="menu-items-container">
+        <MenuItem menuItemLabel="Rólunk" />
+        <MenuItem menuItemLabel="Felvétzelizőknek" />
+        <MenuItem menuItemLabel="Diákjainknak" />
+        <MenuItem menuItemLabel="Digitális Oktatás" />
+        <MenuItem menuItemLabel="Bilingual" />
+        <MenuItem menuItemLabel="Erasmus+" />
+    </div>
+    <div class="key-links-container"></div>
+</div>
+<style>
+    .menu-closed {
+        display: none !important;
+    }
+
+    .menu-container {
+        position: absolute;
+        background-color: var(--Blue3);
+        height: 100vh;
+        width: 100vw;
+        background-image: url("/europa2000-menu-button.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 200px 200px;
+
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        .menu-items-container {
+            align-content: center;
+            justify-items: center;
+            padding-left: 150px;
+            display: grid;
+            gap: 8px;
+        }
+    }
+
+    .slide-in-500 {
+      animation: slideInFromRight 500ms ease-out forwards;
+    }
+
+
+    @keyframes slideInFromRight {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+</style>

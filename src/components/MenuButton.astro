@@ -15,6 +15,20 @@ const menuButtonSize = isMobile ? "70px" : "76px";
         <div class="line line-bottom"></div>
     </div>
 </div>
+<script>
+    document.querySelector('header .menu-button').addEventListener('click', () => {
+        const menuItems = document.querySelectorAll('.menu-container, .menu-item');
+        if (menuItems[0]?.classList.contains('menu-closed')) {
+            menuItems.forEach(element => {
+                element?.classList.remove('menu-closed');
+            })
+        } else {
+            menuItems.forEach(element => {
+                element?.classList.add('menu-closed');
+            })
+        }
+    })
+</script>
 <style define:vars={{ menuButtonSize }}>
     .menu-button {
         background-color: #8bc444;
