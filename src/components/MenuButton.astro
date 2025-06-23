@@ -16,18 +16,35 @@ const menuButtonSize = isMobile ? "70px" : "76px";
     </div>
 </div>
 <script>
-    document.querySelector('header .menu-button').addEventListener('click', () => {
-        const menuItems = document.querySelectorAll('.menu-container, .menu-item');
-        if (menuItems[0]?.classList.contains('menu-closed')) {
-            menuItems.forEach(element => {
-                element?.classList.remove('menu-closed');
-            })
+    const clickListenerCallback = (event: PointerEvent) => {
+        const menuContainer = document.querySelector(".menu-container");
+        const menuItems = document.querySelectorAll(".menu-item");
+        const menuButton  = (event.target as HTMLElement).parentNode;
+        event;
+        if (menuContainer.classList.contains("menu-closed")) {
+            menuButton.classList.add("menu-button-active");
+            menuContainer.classList.remove("menu-closed");
+            menuItems.forEach((element) => {
+                element?.classList.remove("menu-closed");
+            });
         } else {
-            menuItems.forEach(element => {
-                element?.classList.add('menu-closed');
-            })
+            menuButton.classList.remove("menu-button-active");
+            menuContainer.classList.add("slide-out-500");
+            setTimeout(() => {
+                menuContainer.classList.add("menu-closed");
+                menuContainer.classList.remove("slide-out-500");
+            }, 500);
+            menuItems.forEach((element) => {
+                element?.classList.add("menu-closed");
+            });
         }
-    })
+    };
+    document
+        .querySelector("header .hidden-on-mobile .menu-button")
+        .addEventListener("click", clickListenerCallback);
+    document
+        .querySelector("header .hidden-on-desktop .menu-button")
+        .addEventListener("click", clickListenerCallback);
 </script>
 <style define:vars={{ menuButtonSize }}>
     .menu-button {
@@ -70,19 +87,19 @@ const menuButtonSize = isMobile ? "70px" : "76px";
         }
     }
 
-    @media (width >=1200px) {
-        .menu-button:hover {
-            transform: scale(1.1);
-        }
-    }
-
-    .menu-button:hover {
+    .menu-button-active {
         .line-middle {
-            width: 60px;
+            width: 60px !important;
         }
 
         .line-bottom {
-            width: 60px;
+            width: 60px !important;
+        }
+    }
+
+    @media (width >=1200px) {
+        .menu-button:hover {
+            transform: scale(1.1);
         }
     }
 </style>
