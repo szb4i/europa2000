@@ -1,0 +1,37 @@
+---
+type Props = {
+    menuItemLabel: string;
+};
+
+const { menuItemLabel } = Astro.props;
+---
+
+<div class="menu-item menu-closed slide-in-750">
+    <span class="large-paragraph-text-light">{menuItemLabel}</span>
+</div>
+<style>
+    .menu-item {
+        width: 100%;
+    }
+
+    .menu-closed {
+        display: none;
+    }
+
+    .slide-in-750 {
+        opacity: 0;
+        animation: slideInFromRight 750ms ease-out forwards;
+        animation-delay: 0.25s;
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>
