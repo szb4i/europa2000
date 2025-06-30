@@ -1,0 +1,54 @@
+---
+type Props = {
+    imageURL: string;
+};
+
+const { imageURL } = Astro.props;
+---
+
+<div class="image-container">
+    <div class="image-background" style={`background-image: url(${imageURL}`}>
+        <div class="overlay-text-container">
+            <slot />
+        </div>
+    </div>
+</div>
+<style>
+    .image-container {
+        width: 75vw;
+        height: 75vh;
+        border-radius: 16px;
+        overflow: hidden;
+
+        .image-background {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: scale 0.5s ease;
+
+            .overlay-text-container {
+                background: linear-gradient(
+                    176deg,
+                    rgba(0, 0, 0, 0.26) 12.05%,
+                    #000 94.46%
+                );
+                backdrop-filter: blur(6px);
+                height: 100%;
+                width: 100%;
+                padding: 0 10%;
+                align-content: center;
+                justify-items: center;
+            }
+        }
+    }
+
+    @media (width <=770px) {
+        .image-container {
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0px;
+        }
+    }
+</style>

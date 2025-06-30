@@ -1,79 +1,44 @@
 ---
 import Button from "../../components/Button.astro";
+import ImageFullWithText from "../../components/ImageFullWithText.astro";
 ---
 
 <section class="tamogass-minket">
-    <div class="tamogass-minket-image-container">
-        <div class="image-background">
-            <div class="overlay-text-container hidden-texts">
-                <div class="overlay-text-title title-text-light">
-                    <span>Támogass Minket!</span>
-                </div>
-                <div class="overlay-text-subtitle subtitle-text-light">
-                    <span
-                        >Ajánlja fel adója 1%-át, és legyen részese diákjaink
-                        sikereinek!</span
-                    >
-                </div>
-                <div class="overlay-text-paragraph paragraph-text-light">
-                    <span
-                        >Felajánlása az Európa 2000 Oktatási Központ
-                        Alapítványát segíti, amely közhasznú szervezetként a
-                        diákok fejlődését helyezi előtérbe. Az így befolyt
-                        összegekből modern digitális eszközöket, innovatív
-                        tanulási alkalmazásokat és fejlesztéseket biztosítunk,
-                        hogy tanulóink a legkorszerűbb tudással és készségekkel
-                        váljanak a jövő sikeres felnőttjeivé.</span
-                    >
-                </div>
-                <Button text="Támogatom" color="#FFFFFF" />
-            </div>
+    <ImageFullWithText imageURL="/landing/tamogass-minket/tamogass-minket.jpg">
+        <div class="overlay-text-title title-text-light">
+            <span>Támogass Minket!</span>
         </div>
-    </div>
+        <div class="overlay-text-subtitle subtitle-text-light">
+            <span
+                >Ajánlja fel adója 1%-át, és legyen részese diákjaink
+                sikereinek!</span
+            >
+        </div>
+        <div class="overlay-text-paragraph paragraph-text-light">
+            <span
+                >Felajánlása az Európa 2000 Oktatási Központ Alapítványát
+                segíti, amely közhasznú szervezetként a diákok fejlődését
+                helyezi előtérbe. Az így befolyt összegekből modern digitális
+                eszközöket, innovatív tanulási alkalmazásokat és fejlesztéseket
+                biztosítunk, hogy tanulóink a legkorszerűbb tudással és
+                készségekkel váljanak a jövő sikeres felnőttjeivé.</span
+            >
+        </div>
+        <Button text="Támogatom" color="#FFFFFF" />
+    </ImageFullWithText>
 </section>
 <style>
     .tamogass-minket {
-        .tamogass-minket-image-container {
-            width: 75vw;
-            height: 75vh;
-            border-radius: 16px;
-            overflow: hidden;
+        .overlay-text-title {
+            padding-bottom: 32px;
+        }
 
-            .image-background {
-                height: 100%;
-                width: 100%;
-                background-image: url("/landing/tamogass-minket/tamogass-minket.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                transition: scale 0.5s ease;
-                
-                .overlay-text-container {
-                    background: linear-gradient(
-                        176deg,
-                        rgba(0, 0, 0, 0.26) 12.05%,
-                        #000 94.46%
-                        );
-                    backdrop-filter: blur(6px);
-                    height: 100%;
-                    width: 100%;
-                    padding: 0 10%;
-                    align-content: center;
-                    justify-items: center;
+        .overlay-text-subtitle {
+            padding-bottom: 32px;
+        }
 
-                    .overlay-text-title {
-                        padding-bottom: 32px;
-                    }
-
-                    .overlay-text-subtitle {
-                        padding-bottom: 32px;
-                    }
-
-                    .overlay-text-paragraph {
-                        padding-bottom: 32px;
-                    }
-                }
-            }
+        .overlay-text-paragraph {
+            padding-bottom: 32px;
         }
     }
 </style>

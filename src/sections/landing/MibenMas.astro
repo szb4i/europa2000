@@ -1,12 +1,20 @@
 ---
-
+import { Image } from "astro:assets";
 ---
 
 <section class="miben-mas-section">
     <div class="title-container">
         <span class="title-text-dark"> Miben más az Európa 2000? </span>
     </div>
-    <div class="empty-placeholder"></div>
+    <div class="image-container">
+        <Image
+            src="/europa2000-menu-button.png"
+            alt="rhythm nation logo"
+            width={128}
+            height={128}
+            format="webp"
+        />
+    </div>
     <div class="paragraph-container">
         <span class="subtitle-text-dark"
             >Az Európa 2000 Gimnázium több mint egy iskola – nálunk a tanulás
@@ -19,7 +27,7 @@
         place-items: unset;
         align-content: unset;
         grid-template-rows: 1fr 300px 1fr;
-        
+
         .title-container {
             display: grid;
             text-align: center;
@@ -28,10 +36,15 @@
                 align-self: end;
             }
         }
-    
+
+        .image-container {
+            align-content: center;
+            justify-items: center;
+            opacity: 0.6;
+        }
+
         .paragraph-container {
             text-align: center;
         }
     }
-
 </style>

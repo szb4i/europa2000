@@ -4,14 +4,12 @@ import TestimonialSlider from "../../function-components/TestimonialSlider";
 import '../../styles/light-background.css';
 
 const testimonialList = [
-    { author: "joe1", organization: "apple", content: "very good job" },
-    { author: "joe2", organization: "apple", content: "very good job" },
-    { author: "joe3", organization: "apple", content: "very good job" },
-    { author: "joe4", organization: "apple", content: "very good job" },
-    { author: "joe5", organization: "apple", content: "very good job" },
-    { author: "joe6", organization: "apple", content: "very good job" },
-    { author: "joe7", organization: "apple", content: "very good job" },
-    { author: "joe8", organization: "apple", content: "very good job" },
+    { title: "Gimnáziumi képzések", paragraph: "6 és 4 évfolyamos osztályok", imageUrl: "/landing/carousel/gimis.jpg" },
+    { title: "Digitális oktatás", paragraph: "A digitális tanulás nemcsak eszköz, hanem az élményalapú oktatás alapköve. Egyedülálló technológiai háttérrel készítjük fel diákjainkat a jövő kihívásaira.", imageUrl: "/landing/carousel/digitalis.jpg" },
+    { title: "7 szokás program", paragraph: "Életvezetési program a diákok harmonikus személyiségfejlődéséért.", imageUrl: "/landing/carousel/7szokas.jpg" },
+    { title: "Bilingual Program", paragraph: "Felszabadult nyelvtanulás két nyelven.", imageUrl: "/landing/carousel/bilingual.jpg" },
+    { title: "Film és média tagozat", paragraph: "Alkotás, kreativitás, siker az audiovizuális világban.", imageUrl: "/landing/carousel/filmes.jpg" },
+    { title: "Nemzetközi vállalkozói tagozat", paragraph: "Üzleti gondolkodás, globális lehetőségek.", imageUrl: "/landing/carousel/7szokas.jpg" }
 ];
 ---
 
@@ -28,10 +26,10 @@ const testimonialList = [
         </div>
         <div class="flex flex-row justify-center gap-4 p-4">
             <div class="px-4 py-2">
-                <Button text="Key Link 1" />
+                <Button text="Képzéseink" />
             </div>
             <div class="px-4 py-2">
-                <Button text="Key Link 2" />
+                <Button text="Részletek" />
             </div>
         </div>
     </div>

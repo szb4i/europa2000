@@ -1,17 +1,22 @@
 ---
 type Props = {
     menuItemLabel: string;
+    path?: string;
 };
 
-const { menuItemLabel } = Astro.props;
+const { menuItemLabel, path='' } = Astro.props;
 ---
 
 <div class="menu-item menu-closed slide-in-750">
-    <span class="large-paragraph-text-light">{menuItemLabel}</span>
+    <a class="large-paragraph-text-light" href={path}>{menuItemLabel}</a>
 </div>
 <style>
     .menu-item {
         width: 100%;
+    }
+
+    .menu-item:hover {
+        cursor: pointer;
     }
 
     .menu-closed {
