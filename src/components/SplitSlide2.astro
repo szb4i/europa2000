@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+    isTextOnRight?: boolean;
+    textTitle: string;
+    textParagraph: string;
+    imageURL: string;
+};
+
+const {
+    isTextOnRight = false,
+    textTitle,
+    textParagraph,
+    imageURL,
+} = Astro.props;
+---
+
+<div class="split-slide-container" style={`direction: ${isTextOnRight ? 'ltr' : 'rtl'};`}>
+    <div
+        class="split-slide-image-side"
+        style={`background-image: url(${imageURL});`}
+    >
+    </div>
+    <div class="split-slide-text-side">
+        <div class="split-slide-text-container">
+            <div class="split-slide-text-title title-text-light">
+                <span>{textTitle}</span>
+            </div>
+            <div class="split-slide-text-paragraph large-paragraph-text-light">
+                <span>{textParagraph}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .split-slide-container {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--Blue3);
+    }
+
+    @media (width <=770px) {
+        .split-slide-container {
+            grid-template-columns: unset;
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+
+    .split-slide-text-side {
+        display: grid;
+        grid-template-rows: 1fr;
+        direction: ltr;
+
+        .split-slide-text-container {
+            align-content: center;
+            padding: 0% 10%;
+
+            .split-slide-text-title {
+                padding: 16px 0px;
+            }
+        }
+    }
+
+    .split-slide-image-side {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+    }
+</style>

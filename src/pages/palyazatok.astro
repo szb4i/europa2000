@@ -1,0 +1,150 @@
+---
+import "../styles/global.css";
+import "../styles/light-background.css";
+import Layout from "../layouts/Layout.astro";
+import SplitSlide2 from "../components/SplitSlide2.astro";
+import ImageCardWithText from "../components/ImageCardWithText.astro";
+import ImageFullWithText from "../components/ImageFullWithText.astro";
+import Hireink from "../sections/landing/Hireink.astro";
+---
+
+<Layout>
+    <div class="light-background-no-logo">
+        <section>
+            <SplitSlide2
+                isTextOnRight={true}
+                textTitle="Erasmus+"
+                textParagraph="Az Európa 2000 Gimnázium aktívan részt vesz az Erasmus+ programban, amely lehetőséget nyújt diákjainknak és tanárainknak, hogy nemzetközi tapasztalatokat szerezzenek és szélesítsék látókörüket. Az Erasmus+ program keretében diákjaink külföldi iskolákkal lépnek kapcsolatba, és részt vesznek cserediák programokban, szakmai gyakorlatokon és különböző projektekben."
+                imageURL="/palyazatok/palyazatok1.jpg"
+            />
+        </section>
+        <section>
+            <SplitSlide2
+                isTextOnRight={false}
+                textTitle=""
+                textParagraph=" Ezek a tapasztalatok hozzájárulnak a nyelvtudásuk fejlesztéséhez, kulturális ismereteik bővítéséhez, valamint önállóságuk és alkalmazkodóképességük növeléséhez. Tanáraink pedig lehetőséget kapnak arra, hogy szakmai továbbképzéseken vegyenek részt és új módszereket sajátítsanak el, amelyeket itthon is alkalmazhatnak a tanítás során."
+                imageURL="/palyazatok/palyazatok2.jpg"
+            />
+        </section>
+    </div>
+    <section class="light-background-no-logo hatartalanul-section">
+        <div class="hatartalanul-container">
+            <div class="title-container">
+                <span class="title-text-dark">Határtalanul</span>
+            </div>
+            <div class="paragraph-container">
+                <span class="paragraph-text-dark">
+                    A Határtalanul program fantasztikus lehetőséget kínál arra,
+                    hogy diákjaink testközelből ismerjék meg a határon túli
+                    magyar közösségeket, és felfedezzék közös történelmünket és
+                    kulturális örökségünket.
+                </span>
+            </div>
+            <div class="images-row">
+                <ImageCardWithText
+                    rotate="rotate-left"
+                    title="Kirándulások és közös projektek"
+                    paragraph="Diákjaink és tanáraink határon túli magyar iskolákat látogatnak meg, együttműködnek ottani diákokkal, és közös oktatási-kulturális programokon vesznek részt."
+                />
+                <ImageCardWithText
+                    rotate="rotate-right"
+                    title="Élmények és kapcsolatok"
+                    paragraph="Új barátságok születnek, miközben diákjaink első kézből tapasztalhatják meg a külhoni magyar közösségek mindennapjait."
+                />
+                <ImageCardWithText
+                    rotate="rotate-left"
+                    title="Nemzeti identitás és összetartozás"
+                    paragraph="A program erősíti diákjaink magyarságtudatát, és segít mélyebben megérteni történelmünket és kulturális értékeinket."
+                />
+            </div>
+            <div class="paragraph-container">
+                <span class="paragraph-text-dark">
+                    A Határtalanul program nemcsak egy utazás, hanem egy
+                    felejthetetlen élmény, amely közelebb hozza egymáshoz a
+                    magyar fiatalokat, és segít megérteni, hogy a határok
+                    ellenére is egy közösség vagyunk
+                </span>
+            </div>
+        </div>
+    </section>
+    <section class="light-background-no-logo nemzeti-tehetseg-program-section">
+        <ImageFullWithText
+            imageURL="/landing/tamogass-minket/tamogass-minket.jpg"
+        >
+            <div class="overlay-text-title title-text-light">
+                <span>Nemzeti Tehetség Program</span>
+            </div>
+            <div class="overlay-text-paragraph paragraph-text-light">
+                <span
+                    >Az Európa 2000 Gimnázium elkötelezett a tehetséggondozás
+                    iránt, és aktívan részt vesz a Nemzeti Tehetség Programban.
+                    Ez a program célzott támogatást nyújt a kiemelkedő képességű
+                    diákok számára, hogy fejleszthessék tehetségüket és
+                    kibontakoztathassák potenciáljukat. Az iskolánkban működő
+                    szakkörök, tehetséggondozó műhelyek és versenyfelkészítő
+                    csoportok mind a diákok egyéni igényeire szabott fejlesztési
+                    lehetőségeket kínálnak. A Nemzeti Tehetség Program keretében
+                    diákjaink részt vehetnek különböző országos és nemzetközi
+                    versenyeken, tudományos konferenciákon és művészeti
+                    bemutatókon, amelyek hozzájárulnak a sikeres pályafutásuk
+                    megalapozásához.</span
+                >
+            </div>
+        </ImageFullWithText>
+    </section>
+    <section class="light-background-no-logo">
+        <Hireink />
+    </section>
+</Layout>
+
+<style>
+    .erasmus-plus-text-section {
+        text-align: center;
+        width: 80vw;
+
+        .title-container {
+            padding-bottom: 8px;
+        }
+
+        .subtitle-container {
+            padding-bottom: 24px;
+        }
+    }
+
+    .hatartalanul-container {
+        text-align: center;
+
+        .title-container {
+            padding-bottom: 24px;
+        }
+
+        .images-row {
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+            padding-bottom: 24px;
+        }
+
+        .paragraph-container {
+            width: 80vw;
+        }
+    }
+
+    .nemzeti-tehetseg-program-section {
+        .overlay-text-title {
+            padding-bottom: 32px;
+        }
+    }
+
+    @media (width <=770px) {
+        .hatartalanul-section {
+            height: 100%;
+            padding: 32px 0px;
+
+            .images-row {
+                flex-direction: column !important;
+            }
+        }
+    }
+</style>

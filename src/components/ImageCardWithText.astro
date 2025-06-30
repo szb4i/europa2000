@@ -1,0 +1,107 @@
+---
+type Props = {
+    rotate?: string;
+    title: string;
+    paragraph: string;
+};
+
+const { rotate, title, paragraph } = Astro.props;
+---
+
+<div
+    class={"image-with-text-container " +
+        (rotate === "rotate-left"
+            ? "-rotate-2"
+            : rotate === "rotate-right"
+              ? "rotate-2"
+              : "")}
+>
+    <div
+        class="overlay-text-container overlay-text-container-padding-top-on-hover"
+    >
+        <div class="overlay-text-title subtitle-text-light">{title}</div>
+        <div class="overlay-text-description paragraph-text-light">
+            {paragraph}
+        </div>
+    </div>
+</div>
+<style>
+    .image-with-text-container.rotate-2:hover {
+        transform: rotate(-2deg);
+        animation: ease;
+    }
+
+    .image-with-text-container.-rotate-2:hover {
+        transform: rotate(2deg);
+        animation: ease;
+    }
+
+    .image-with-text-container {
+        transition: transform 0.5s ease-in-out;
+        position: relative;
+        background-image: linear-gradient(
+                175deg,
+                rgba(0, 0, 0, 0) 34.59%,
+                #000 94.22%
+            ),
+            url("/D85-7380.jpg");
+        border-radius: 8px;
+        box-shadow: 16px 16px 8px 0px rgba(0, 0, 0, 0.25);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        .overlay-text-container-padding-top-on-hover {
+            padding-top: 230px;
+            transition:
+                padding 0.75s ease,
+                background 0.5s ease;
+        }
+
+        .overlay-text-container-padding-top-on-hover:hover {
+            padding-top: 0px;
+            transition:
+                padding 0.75s ease,
+                background 0.5s ease;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .overlay-text-container {
+            position: absolute;
+            border-radius: 8px;
+            z-index: 2;
+            height: 100%;
+            overflow: hidden;
+
+            .overlay-text-title {
+                padding-top: 100px;
+            }
+
+            .overlay-text-description {
+                padding-top: 100px;
+            }
+        }
+    }
+
+    @media (width <=770px) {
+        .image-with-text-container {
+            height: 400px;
+            width: 300px;
+
+            .overlay-text-container-padding-top-on-hover {
+                padding-top: 0px;
+                background: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+
+    @media (width > 770px) {
+        .image-with-text-container {
+            height: 400px;
+            width: 300px;
+        }
+    }
+</style>
