@@ -15,6 +15,7 @@
 
     .image-container {
         position: relative;
+        height: 400px;
         background-image: linear-gradient(175deg, rgba(0, 0, 0, 0.00) 34.59%, #000 94.22%), url('/D85-7380.jpg');
         background-size: cover;
         background-position: center;
@@ -24,17 +25,6 @@
         text-align: center;
     }
 
-    @media (width <=770px) {
-        .image-container {
-            height: 200px;
-        }
-    }
-
-    @media (width > 770px) {
-        .image-container {
-            height: 400px;
-        }
-    }
 
 
     .overlay-text-container-padding-top-on-hover {
@@ -52,7 +42,11 @@
         position: absolute;
         z-index: 2;
         height: 100%;
+        width: 100%;
         overflow: hidden;
+        /* padding: 0px 20px; */
+        padding-left: 20px;
+        padding-right: 20px;
 
         .overlay-text-title {
             padding-top: 100px;
@@ -60,6 +54,15 @@
 
         .overlay-text-description {
             padding-top: 100px;
+        }
+    }
+
+    @media (width <=770px) {
+        .image-container {
+            .overlay-text-container-padding-top-on-hover {
+                padding-top: 0px !important;
+                background: rgba(0, 0, 0, 0.5);
+            }
         }
     }
 }
