@@ -8,7 +8,7 @@ import Menu from "./Menu.astro";
 
 <header>
     <div
-        class="hidden-on-mobile fixed z-20 flex justify-between items-center px-12 py-12 justify-self-center w-full"
+        class="hidden-on-mobile fixed z-20 flex justify-between items-center justify-self-center w-full header-row"
     >
         <a href="/">
             <Image
@@ -32,6 +32,10 @@ import Menu from "./Menu.astro";
     <Menu />
 </header>
 <style>
+    .header-row {
+        padding: 2rem 2rem 0rem 2rem;
+    }
+
     .logo-button {
         transition: all 0.2s ease-in-out;
     }

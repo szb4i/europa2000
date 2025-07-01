@@ -1,5 +1,5 @@
 ---
-import Logo from "../../public/icons/facebook.svg";
+import FacebookLogo from "../../public/icons/facebook.svg";
 ---
 
 <div class="card-container">
@@ -10,7 +10,7 @@ import Logo from "../../public/icons/facebook.svg";
     </div>
     <div class="card-footer">
         <div class="card-footer-date paragraph-text-dark">2025.01.01</div>
-        <div class="card-footer-social-icon"><Logo /></div>
+        <div class="card-footer-social-icon"><FacebookLogo /></div>
     </div>
 </div>
 <style>
@@ -42,6 +42,13 @@ import Logo from "../../public/icons/facebook.svg";
 
             .card-footer-date {
                 padding-left: 6px;
+            }
+
+            .card-footer-social-icon {
+                svg {
+                    fill: var(--Blue4);
+                    padding-bottom: 30px;
+                }
             }
         }
     }
