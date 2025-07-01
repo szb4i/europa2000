@@ -13,7 +13,9 @@ import Card from "../../components/Card.astro";
         <Card />
         <Card />
     </div>
-    <Button text="További Hírek" />
+    <div class="button-row">
+        <Button text="További Hírek" />
+    </div>
 </div>
 <style>
     .kiemelt-hireink-container {
@@ -32,13 +34,13 @@ import Card from "../../components/Card.astro";
         }
 
         @media (width <=770px) {
-            .news-container .card-container:nth-child(n+2) {
+            .news-container .card-container:nth-child(n + 2) {
                 display: none;
             }
         }
 
         @media (width > 770px) and (width <= 1200px) {
-            .news-container .card-container:nth-child(n+3) {
+            .news-container .card-container:nth-child(n + 3) {
                 display: none;
             }
         }

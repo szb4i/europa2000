@@ -14,26 +14,68 @@ import FacebookLogo from "../../public/icons/facebook.svg";
                 format="webp"
                 class="logo-button"
             />
-            <span class="paragraph-text-light">© 1992-2025 Európa 2000 Gimnázium</span>
+            <span class="paragraph-text-light"
+                >© 1992-2025 Európa 2000 Gimnázium</span
+            >
         </div>
         <div class="footer-column">
-            <div>
-                <span class="footer-column-title subtitle-text-light">Key Links</span>
+            <div class="links-container">
+                <div>
+                    <span class="footer-column-title subtitle-text-light"
+                        >Fontos linkek</span
+                    >
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Főoldal</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Az iskola</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Felvételi</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Iskolai élet</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Pályázatok</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Alumni</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Kapcsolat</span>
+                </div>
             </div>
-            <div>
-                <span class="paragraph-text-light">Link1</span>
-            </div>
-            <div>
-                <span class="paragraph-text-light">Link2</span>
-            </div>
-            <div>
-                <span class="paragraph-text-light">Link3</span>
+        </div>
+        <div class="footer-column">
+            <div class="documents-container">
+                <div>
+                    <span class="footer-column-title subtitle-text-light"
+                        >Dokumnentumok</span
+                    >
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Adatvédelmi nyilatkozat</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Etika</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Cookie szabályzat</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Impresszum</span>
+                </div>
+                <div class="key-link">
+                    <span class="paragraph-text-light">Jogi közlemény</span>
+                </div>
             </div>
         </div>
         <div class="footer-column">
             <span class="footer-column-title subtitle-text-light">Social</span>
             <div class="social-icons-row">
-                <FacebookLogo/>
+                <FacebookLogo  />
             </div>
         </div>
     </div>
@@ -43,7 +85,7 @@ import FacebookLogo from "../../public/icons/facebook.svg";
         background-color: var(--Blue3);
         height: 400px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         padding-top: 40px;
 
         .footer-column {
@@ -52,6 +94,24 @@ import FacebookLogo from "../../public/icons/facebook.svg";
 
             .footer-column-title {
                 color: #8e8e93 !important;
+            }
+        }
+
+        .links-container {
+            width: 150px;
+            text-align: left;
+
+            .key-link {
+                cursor: pointer;
+            }
+        }
+
+        .documents-container {
+            width: 200px;
+            text-align: left;
+
+            .key-link {
+                cursor: pointer;
             }
         }
     }
