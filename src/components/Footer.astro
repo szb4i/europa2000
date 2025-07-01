@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import FacebookLogo from "../../public/icons/facebook.svg";
+import YoutubeLogo from "../../public/icons/youtube.svg";
+import InstagramLogo from "../../public/icons/instagram.svg";
 ---
 
 <footer>
@@ -56,7 +58,9 @@ import FacebookLogo from "../../public/icons/facebook.svg";
                     >
                 </div>
                 <div class="key-link">
-                    <span class="paragraph-text-light">Adatvédelmi nyilatkozat</span>
+                    <span class="paragraph-text-light"
+                        >Adatvédelmi nyilatkozat</span
+                    >
                 </div>
                 <div class="key-link">
                     <span class="paragraph-text-light">Etika</span>
@@ -75,7 +79,9 @@ import FacebookLogo from "../../public/icons/facebook.svg";
         <div class="footer-column">
             <span class="footer-column-title subtitle-text-light">Social</span>
             <div class="social-icons-row">
-                <FacebookLogo  />
+                <FacebookLogo />
+                <InstagramLogo />
+                <YoutubeLogo />
             </div>
         </div>
     </div>
@@ -113,6 +119,12 @@ import FacebookLogo from "../../public/icons/facebook.svg";
             .key-link {
                 cursor: pointer;
             }
+        }
+
+        .social-icons-row {
+            gap: 10px;
+            display: flex;
+            scale: 0.5;
         }
     }
 </style>
