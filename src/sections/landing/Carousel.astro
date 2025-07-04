@@ -9,26 +9,26 @@ const testimonialList = [
     { title: "7 szokás program", paragraph: "Életvezetési program a diákok harmonikus személyiségfejlődéséért.", imageUrl: "/landing/carousel/7szokas.jpg" },
     { title: "Bilingual Program", paragraph: "Felszabadult nyelvtanulás két nyelven.", imageUrl: "/landing/carousel/bilingual.jpg" },
     { title: "Film és média tagozat", paragraph: "Alkotás, kreativitás, siker az audiovizuális világban.", imageUrl: "/landing/carousel/filmes.jpg" },
-    { title: "Nemzetközi vállalkozói tagozat", paragraph: "Üzleti gondolkodás, globális lehetőségek.", imageUrl: "/landing/carousel/7szokas.jpg" }
+    { title: "Nemzetközi vállalkozói tagozat", paragraph: "Üzleti gondolkodás, globális lehetőségek.", imageUrl: "/landing/carousel/vallalkozo.jpg" }
 ];
 ---
 
 <section class="light-background">
     <div class="carousel-container">
-        <div class="hero-element-hidden carousel-title">
+        <div class="hero-element-hidden carousel-title hidden-1s">
             <p class="subtitle-text-dark">
                 Az Európa 2000 Gimnázium Zugló szívében várja a diákokat, hogy
                 egy inspiráló közösség részei legyenek.
             </p>
         </div>
-        <div class="carousel">
+        <div class="carousel  hidden-2s">
             <TestimonialSlider list={testimonialList} client:load />
         </div>
-        <div class="flex flex-row justify-center gap-4 p-4">
-            <div class="px-4 py-2">
+        <div class="hidden-1s flex flex-row justify-center gap-4 p-4">
+            <div class="hidden-1s px-4 py-2">
                 <Button text="Képzéseink" isBackgroundColor={true} />
             </div>
-            <div class="px-4 py-2">
+            <div class="hidden-2s px-4 py-2">
                 <Button text="Részletek" isBackgroundColor={true} />
             </div>
         </div>
