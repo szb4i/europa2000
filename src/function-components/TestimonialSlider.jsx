@@ -26,7 +26,10 @@ const TestimonialSlider = ({ list }) => {
         loop={true}
         modules={[Pagination, Autoplay]}
         slidesPerView={1}
-        // autoplay={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: true,
+        }}
         breakpoints={{
           992: {
             slidesPerView: 2,
@@ -41,7 +44,7 @@ const TestimonialSlider = ({ list }) => {
             {/* <div className={'carousel-image-container mx-4 my-16 rounded-xl text-center shadow ' + (i % 2 === 0 ? 'rotate-2' : '-rotate-2')}>
               <img className="carousel-image rounded-xl" src="/D85-7380.jpg" alt="" />
             </div> */}
-            <div className={'image-container mx-4 my-16 rounded-xl text-center shadow ' + (i % 2 === 0 ? 'rotate-2' : '-rotate-2')} style={{backgroundImage: `linear-gradient(175deg, rgba(0, 0, 0, 0.00) 34.59%, #000 94.22%), url(${item.imageUrl})`}}>
+            <div className={'image-container mx-4 my-16 rounded-xl text-center shadow ' + (i % 2 === 0 ? 'rotate-2' : '-rotate-2')} style={{ backgroundImage: `linear-gradient(175deg, rgba(0, 0, 0, 0.00) 34.59%, #000 94.22%), url(${item.imageUrl})` }}>
               <div className="overlay-text-container overlay-text-container-padding-top-on-hover rounded-xl">
                 <div className="overlay-text-title subtitle-text-light">{item.title}</div>
                 <div className="overlay-text-description paragraph-text-light">{item.paragraph}</div>
